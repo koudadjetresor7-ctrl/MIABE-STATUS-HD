@@ -1,0 +1,2732 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="MIABE STATUS — préparation de vidéos et photos pour WhatsApp Status en haute qualité.">
+  <title>MIABE STATUS HD</title>
+  <link rel="icon" href="/miabe-logo-light.png">
+  <style>
+    :root {
+      --bg:#ffffff;
+      --surface:#ffffff;
+      --surface-2:#f5f5f7;
+      --text:#1d1d1f;
+      --muted:#6e6e73;
+      --border:#d2d2d7;
+      --border-strong:#a1a1a6;
+      --black:#111111;
+      --green:#25D366;
+      --green-dark:#128C7E;
+      --danger:#c62828;
+      --shadow:0 14px 45px rgba(0,0,0,.07);
+    }
+    html[data-theme="dark"] {
+      --bg:#0b0b0c;
+      --surface:#151516;
+      --surface-2:#202022;
+      --text:#f5f5f7;
+      --muted:#a1a1a6;
+      --border:#38383c;
+      --border-strong:#66666b;
+      --black:#f5f5f7;
+      --green:#25D366;
+      --green-dark:#1aa957;
+      --danger:#ff6b6b;
+      --shadow:0 14px 45px rgba(0,0,0,.3);
+    }
+    *{box-sizing:border-box}
+    html{background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    button:disabled{cursor:not-allowed;opacity:.5}
+    .topbar{position:sticky;top:0;left:0;right:0;width:100%;z-index:900;margin:0;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--bg) 72%,transparent);border:0;border-radius:0;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:0 8px 28px rgba(0,0,0,.06);transition:background .25s ease,box-shadow .25s ease}
+    .topbar.scrolled{background:color-mix(in srgb,var(--surface) 84%,transparent);box-shadow:0 12px 34px rgba(0,0,0,.11);border-color:color-mix(in srgb,var(--border) 75%,transparent)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
+    .brand-mark{width:42px;height:42px;border-radius:9px;display:grid;place-items:center;background:var(--black);color:var(--bg);font-size:12px;font-weight:800;overflow:hidden}.miabe-logo{width:58px;height:58px;display:block;flex:none;object-fit:contain}.miabe-logo-dark{display:none}html[data-theme="dark"] .miabe-logo-light{display:none}html[data-theme="dark"] .miabe-logo-dark{display:block}footer .miabe-logo{width:62px;height:62px;margin:0 auto;object-fit:contain}
+    .brand-name{color:var(--green);font-size:18px}
+    .brand-name{color:var(--green);font-size:18px}
+    .topbar-actions{display:flex;align-items:center;gap:8px}
+    .theme-btn,.account-btn,.subscribe-top-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:9px 13px;border-radius:999px;font-size:13px;display:inline-flex;align-items:center;gap:7px;transition:.15s}.theme-btn{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;position:relative}.theme-btn svg{width:18px;height:18px;display:block}.theme-btn .theme-icon-sun{display:none}.theme-btn .theme-icon-moon{display:block}html[data-theme="dark"] .theme-btn .theme-icon-sun{display:block}html[data-theme="dark"] .theme-btn .theme-icon-moon{display:none}.subscribe-top-btn{background:var(--green);color:#071b0d;border-color:var(--green);font-weight:650}.subscribe-top-btn:hover{opacity:.88}
+    .theme-btn:hover,.account-btn:hover,.subscribe-top-btn:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+    .account-btn svg{width:16px;height:16px;flex:none}.subscribe-top-btn{display:inline-flex}
+    main{max-width:900px;margin:0 auto;padding:10px 20px 70px}
+    .hero{text-align:center;padding:45px 0 30px}
+    .hero h1{margin:0;font-size:clamp(40px,8vw,68px);line-height:1;letter-spacing:-.055em}
+    .hero h1 span{color:var(--green)}
+    .hero p{max-width:560px;margin:18px auto 0;color:var(--muted);font-size:16px;line-height:1.55}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:28px;box-shadow:var(--shadow);margin-bottom:20px}
+    .card-title{font-size:23px;font-weight:650;letter-spacing:-.025em;margin-bottom:20px}
+    .upload-zone{border:1.5px dashed var(--border-strong);border-radius:20px;background:var(--surface-2);padding:48px 24px;text-align:center;transition:.15s}
+    .upload-zone:hover,.upload-zone.dragover{border-color:var(--green);transform:translateY(-1px)}
+    .upload-icon{width:54px;height:54px;margin:0 auto 16px;border-radius:16px;background:var(--black);color:var(--bg);display:grid;place-items:center}.upload-icon svg{width:29px;height:29px;display:block}
+    .upload-zone h3{margin:0 0 8px;font-size:20px}
+    .upload-zone p{margin:0;color:var(--muted);font-size:14px}
+    .media-buttons{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .choose-video-button,.media-tool-btn{margin-top:0;border:0;border-radius:999px;background:var(--black);color:var(--bg);padding:13px 20px;font-weight:600;cursor:pointer}
+    .media-tool-btn{background:var(--green);color:#fff}
+    .choose-video-button:hover,.media-tool-btn:hover{opacity:.88}
+    #fileInput{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .format-row{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:18px}
+    .format{padding:5px 9px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px}
+    .files-list{display:none;margin-top:18px}
+    .files-list.visible{display:block}
+    .file-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+    .file-item:last-child{border-bottom:0}
+    .file-icon{width:38px;height:38px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;flex:0 0 auto}
+    .file-icon:before{content:"";width:15px;height:12px;border:1.5px solid var(--muted);border-radius:3px}
+    .file-info{min-width:0;flex:1}
+    .file-name{font-size:14px;overflow-wrap:anywhere}
+    .file-size{font-size:12px;color:var(--muted);margin-top:3px}
+    .file-remove{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text)}
+    .file-summary{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:var(--muted);font-size:13px}
+    .quality-row{display:flex;gap:10px;margin-top:16px}
+    .q-opt{flex:1;border:1px solid var(--border);background:var(--surface);border-radius:14px;padding:13px;cursor:pointer}
+    .q-opt:has(input:checked){border-color:var(--green);box-shadow:0 0 0 2px rgba(37,211,102,.15)}
+    .q-opt strong{display:block;font-size:14px}
+    .q-opt span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .q-opt input{position:absolute;opacity:0}
+    .primary-btn,.secondary-btn,.wa-btn{width:100%;min-height:50px;border-radius:999px;border:0;font-weight:650;margin-top:18px}
+    .primary-btn{background:var(--black);color:var(--bg)}
+    .secondary-btn{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+    .wa-btn{background:var(--green);color:#071b0d}
+    .progress-card{display:none}
+    .progress-head{display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .progress-pct{font-weight:700}
+    .progress-track{height:9px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:18px}
+    .progress-fill{height:100%;width:0;background:var(--green);transition:width .2s}
+    .status{margin-top:13px;color:var(--muted);font-size:14px}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:18px}
+    .step{border:1px solid var(--border);border-radius:12px;padding:9px;text-align:center;font-size:11px;color:var(--muted)}
+    .step.active{border-color:var(--green);color:var(--text)}
+    .step.done{background:var(--surface-2);color:var(--text)}
+    .activation-section,.success-section{display:none}
+    .activation-section.visible,.success-section.visible{display:block}
+    .code-display{text-align:center;padding:18px 0}
+    .code-label{font-size:13px;color:var(--muted)}
+    .code-value{font-size:34px;font-weight:800;letter-spacing:7px;margin:9px 0}
+    .code-copy{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:9px 16px}
+    .activation-steps,.upload-instructions{margin-top:20px}
+    .step-item{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);font-size:14px;line-height:1.45}
+    .step-item:last-child{border-bottom:0}
+    .step-num{width:27px;height:27px;flex:0 0 27px;border-radius:50%;background:var(--black);color:var(--bg);display:grid;place-items:center;font-size:12px;font-weight:700}
+    .success-title{font-size:27px;font-weight:700;text-align:center}
+    .success-subtitle{text-align:center;color:var(--muted);margin:8px auto 22px;line-height:1.5}
+    .share-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .share-buttons button{margin-top:0}
+    .pbt-plan{display:none;align-items:center;justify-content:space-between;gap:15px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:15px 18px;margin-bottom:20px}
+    .pbt-plan.visible{display:flex}
+    .pbt-plan small{color:var(--muted)}
+    .pbt-subscribe{border:0;background:var(--green);color:#071b0d;border-radius:999px;padding:10px 15px;font-weight:650}
+    .account-plan-box{margin-top:16px;padding:16px;border:1px solid var(--border);border-radius:16px;background:var(--surface-2);transition:.18s}
+    .account-plan-box.trial{background:rgba(255,184,0,.10);border-color:rgba(255,184,0,.42)}
+    .account-plan-box.trial #accountPlan{color:#d99b00}
+    .account-plan-box.premium{background:rgba(37,211,102,.10);border-color:rgba(37,211,102,.38)}
+    .account-plan-box.premium #accountPlan{color:var(--green)}
+    .account-plan-box.expired{background:rgba(255,77,79,.10);border-color:rgba(255,77,79,.42)}
+    .account-plan-box.expired #accountPlan{color:#ff5c5f}
+    .account-logout{width:100%;margin-top:9px;min-height:46px;border-radius:999px;border:1px solid rgba(255,77,79,.45)!important;background:rgba(255,77,79,.10)!important;color:#ff5c5f!important;font-weight:650}
+    .account-logout:hover{background:rgba(255,77,79,.18)!important;border-color:rgba(255,77,79,.7)!important}
+    .pbt-auth{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+    .pbt-auth.visible{display:flex}
+    .pbt-auth-card{width:min(460px,100%);max-height:90vh;overflow:auto;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:24px;padding:26px;box-shadow:0 30px 90px rgba(0,0,0,.25)}
+    .pbt-auth-card h2{margin:0 0 8px;font-size:27px;letter-spacing:-.03em}
+    .pbt-auth-card p{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 18px}
+    .pbt-phone-picker{display:flex;gap:8px;position:relative}
+    .pbt-country-button{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:12px;padding:0 12px;min-width:100px}
+    .pbt-phone-picker input,.pbt-country-panel input{width:100%;height:48px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:12px;padding:0 13px;outline:none}
+    .pbt-phone-picker input:focus,.pbt-country-panel input:focus{border-color:var(--green)}
+    .pbt-country-panel{margin-top:8px;border:1px solid var(--border);background:var(--surface);border-radius:14px;padding:9px}
+    .pbt-country-list{max-height:230px;overflow:auto;margin-top:8px}
+    .pbt-country-item{width:100%;display:grid;grid-template-columns:30px 1fr auto;gap:7px;text-align:left;border:0;background:transparent;color:var(--text);padding:10px;border-radius:9px}
+    .pbt-country-item:hover{background:var(--surface-2)}
+    .country-dial{color:var(--muted)}
+    .pbt-country-empty{padding:12px;color:var(--muted);font-size:13px}
+    .pbt-auth-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+    .pbt-auth-actions button{min-height:46px;border-radius:999px;border:0;font-weight:650}
+    .pbt-auth-primary{background:var(--green);color:#071b0d}
+    .pbt-auth-secondary{background:var(--surface-2);color:var(--text);border:1px solid var(--border)!important}
+    .pbt-auth-message{min-height:20px;margin-top:10px;color:var(--muted);font-size:13px}
+    .pbt-auth-code{display:none;margin-top:12px;padding:12px;text-align:center;border-radius:12px;background:var(--surface-2);font-weight:800;letter-spacing:5px}
+    .pbt-dev-code{display:none;margin-top:8px;text-align:center;color:var(--green);font-weight:700}
+    footer{border-top:1px solid var(--border);padding:32px 20px 28px;text-align:center;color:var(--muted);font-size:12px}
+    footer .brand-name{font-size:15px}
+    .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:18px 0 14px}
+    .footer-link{border:0;background:none;color:var(--muted);padding:5px;font-size:12px;text-decoration:none;cursor:pointer}
+    .footer-link:hover{color:var(--text);text-decoration:underline}
+    .footer-credit{margin-top:12px;font-size:11px;color:var(--muted)}
+    .footer-copy{margin-top:7px;font-size:11px;color:var(--muted)}
+    .info-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+    .info-modal.visible{display:flex}
+    .info-card{width:min(560px,100%);max-height:min(78vh,720px);overflow:auto;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:22px;padding:26px;box-shadow:0 24px 80px rgba(0,0,0,.22);text-align:left}
+    .info-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}
+    .info-title{font-size:22px;font-weight:700;letter-spacing:-.025em}
+    .info-close{border:1px solid var(--border);background:var(--surface-2);color:var(--text);width:36px;height:36px;border-radius:50%;font-size:20px;line-height:1}
+    .info-card h3{font-size:15px;margin:18px 0 7px}
+    .info-card p,.info-card li{font-size:13px;line-height:1.65;color:var(--muted)}
+    .info-card p{margin:8px 0}
+    .info-card ul{padding-left:20px}
+    .support-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:12px;padding:11px 16px;border-radius:999px;background:var(--green);color:#071b0d;text-decoration:none;font-weight:700;font-size:13px}
+
+    /* Scroll reveal animations */
+    .scroll-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);will-change:opacity,transform}
+    .scroll-reveal.revealed{opacity:1;transform:none}
+    .scroll-reveal.reveal-scale{transform:translateY(24px) scale(.985)}
+    .scroll-reveal.reveal-scale.revealed{transform:none}
+    @media (prefers-reduced-motion: reduce){.scroll-reveal{opacity:1;transform:none!important;transition:none}.topbar{transition:none}}
+    @media(max-width:650px){
+      .card{padding:20px;border-radius:20px}
+      .quality-row,.share-buttons{grid-template-columns:1fr;display:grid}
+      .steps{grid-template-columns:1fr 1fr}
+      .hero{padding-top:30px}
+      .pbt-phone-picker{display:grid;grid-template-columns:100px 1fr}
+      /* Mobile: logo stays left, actions stay grouped on the right. */
+      .topbar{padding:8px 12px}
+      .topbar .brand-name{display:none}
+      .topbar .brand{gap:0}
+      .topbar .miabe-logo{width:52px;height:52px}
+      .topbar-actions{gap:6px}
+      .topbar-actions .account-btn,.topbar-actions .subscribe-top-btn{padding:8px 10px;font-size:12px}
+      .topbar-actions .theme-btn{width:38px;height:38px}
+    }
+  
+    /* Media preview + photo-to-video */
+    .media-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .media-tool-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:11px 16px;font-weight:600;cursor:pointer}
+    .media-tool-btn:hover{background:var(--surface-2)}
+    .media-tool-btn.green{background:#25D366;color:#fff;border-color:#25D366}
+    #photoInput{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .preview-panel{display:none;width:fit-content;max-width:100%;margin:18px auto 0;padding:8px;border:1px solid var(--border);border-radius:14px;background:var(--surface-2)}
+    .preview-panel.visible{display:block}
+        .preview-video{display:block;width:min(240px,100%);max-height:420px;margin:0 auto;border-radius:14px;background:#000;object-fit:contain}
+    .photo-options{display:none;margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+    .photo-options.visible{display:block}
+    .photo-options-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .photo-duration-wrap{position:relative;display:inline-flex;align-items:center;min-width:150px}
+    .photo-duration-wrap::after{content:'⌄';position:absolute;right:13px;top:50%;transform:translateY(-52%);font-size:15px;color:var(--muted);pointer-events:none}
+    .photo-options select{appearance:none;-webkit-appearance:none;width:100%;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:13px;padding:11px 38px 11px 13px;font-weight:650;font-size:13px;line-height:1.2;outline:none;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:border-color .15s,box-shadow .15s,transform .15s}
+    .photo-options select:hover{border-color:var(--muted)}
+    .photo-options select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(37,211,102,.12)}
+    .photo-status{margin-top:10px;font-size:12px;color:var(--muted);min-height:18px}
+    .photo-progress{height:5px;background:var(--border);border-radius:99px;overflow:hidden;margin-top:8px;display:none}
+    .photo-progress.visible{display:block}
+    .photo-progress-fill{height:100%;width:0;background:#25D366;transition:width .1s linear}
+    .caption-section{margin-top:18px;padding:16px;border:1px solid var(--border);border-radius:18px;background:var(--surface-2)}
+    .caption-label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}
+    .caption-help{display:block;color:var(--muted);font-size:12px;line-height:1.45;margin-bottom:10px}
+    #captionInput{width:100%;min-height:96px;resize:vertical;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:13px;padding:12px 13px;outline:none;font:inherit;font-size:14px;line-height:1.45}
+    #captionInput:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(37,211,102,.12)}
+    .caption-counter{display:flex;justify-content:flex-end;margin-top:6px;color:var(--muted);font-size:11px}
+    .preview-thumbnail{display:block;width:min(190px,100%);max-height:330px;aspect-ratio:9/16;border-radius:10px;background:#000;object-fit:contain}
+    .file-thumb{width:64px;height:88px;border-radius:10px;object-fit:cover;background:#eee;flex:none}
+    .file-item{display:flex;align-items:center;gap:12px}
+
+    /* Subscription pricing */
+    /* Paiement SoftPay — présentation premium et parfaitement centrée */
+    .subscription-payment{
+      display:none;
+      margin-top:20px;
+      width:100%;
+      animation:paymentFadeIn .28s ease both;
+    }
+    .subscription-payment.visible{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    @keyframes paymentFadeIn{
+      from{opacity:0;transform:translateY(8px)}
+      to{opacity:1;transform:none}
+    }
+    .subscription-payment-head{
+      width:min(680px,100%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin:0 auto 14px;
+    }
+    .subscription-payment-title{
+      font-size:21px;
+      font-weight:750;
+      letter-spacing:-.03em;
+    }
+    .subscription-payment-back{
+      flex:0 0 auto;
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      color:var(--text);
+      padding:9px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:600;
+      transition:transform .15s ease,border-color .15s ease,background .15s ease;
+    }
+    .subscription-payment-back:hover{
+      transform:translateY(-1px);
+      border-color:var(--border-strong);
+      background:var(--surface);
+    }
+    .subscription-payment-box{
+      width:min(680px,100%);
+      margin:0 auto;
+      border:1px solid color-mix(in srgb,var(--border) 82%,transparent);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 50% 0%,rgba(37,211,102,.07),transparent 42%),
+        var(--surface-2);
+      padding:18px;
+      box-shadow:
+        0 18px 55px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.035);
+    }
+    html[data-theme="dark"] .subscription-payment-box{
+      border-color:rgba(255,255,255,.10);
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.32),
+        inset 0 1px 0 rgba(255,255,255,.035);
+    }
+    .subscription-payment-status{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+      margin:12px auto 0;
+      max-width:560px;
+    }
+
+    /* Cartflox SoftPay : le widget reste natif, mais son bloc est centré */
+    #cartfloxSoftpay{
+      width:100%;
+      min-height:160px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:left;
+    }
+    #cartfloxSoftpay > *{
+      margin-left:auto !important;
+      margin-right:auto !important;
+    }
+
+    @media(max-width:650px){
+      .subscription-payment-head{
+        width:100%;
+        align-items:flex-start;
+      }
+      .subscription-payment-title{font-size:19px}
+      .subscription-payment-box{
+        width:100%;
+        padding:12px;
+        border-radius:20px;
+      }
+    }
+    .subscription-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:20px;z-index:10000}
+    .subscription-modal.visible{display:flex}
+    .subscription-card{width:min(760px,100%);max-height:90vh;overflow:auto;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:26px;padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.28)}
+    .subscription-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}
+    .subscription-head h2{margin:0;font-size:30px;letter-spacing:-.035em}
+    .subscription-head p{margin:7px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
+    .subscription-close{width:38px;height:38px;flex:0 0 38px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:50%;font-size:20px}
+    .subscription-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .subscription-plan{border:1px solid var(--border);border-radius:20px;padding:20px;background:var(--surface);transition:.15s}
+    .subscription-plan:hover{transform:translateY(-2px);border-color:var(--border-strong)}
+    .subscription-plan.featured{border-color:var(--green);box-shadow:0 0 0 2px rgba(37,211,102,.10)}
+    .subscription-plan h3{margin:0;font-size:16px}
+    .subscription-price{margin:10px 0 15px;font-size:25px;font-weight:800;letter-spacing:-.03em}
+    .subscription-price span{font-size:12px;font-weight:500;color:var(--muted)}
+    .subscription-plan ul{list-style:none;padding:0;margin:0 0 18px}
+    .subscription-plan li{font-size:12px;color:var(--muted);padding:5px 0;line-height:1.4}
+    .subscription-plan li::before{content:'✓';color:var(--green);font-weight:800;margin-right:7px}
+    .subscription-choose{width:100%;min-height:44px;border:0;border-radius:999px;background:var(--green);color:#071b0d;font-weight:700}
+    .subscription-note{text-align:center;color:var(--muted);font-size:12px;line-height:1.5;margin:18px 0 0}
+    .subscription-whatsapp{display:none;margin-top:18px;padding:15px;border:1px solid rgba(37,211,102,.35);background:rgba(37,211,102,.08);border-radius:16px;text-align:center}
+    .subscription-whatsapp.visible{display:block}
+    .subscription-whatsapp strong{display:block;font-size:14px;margin-bottom:5px}
+    .subscription-whatsapp p{margin:0 0 12px;color:var(--muted);font-size:12px}
+    .subscription-whatsapp button{width:100%;min-height:45px;border:0;border-radius:999px;background:var(--green);color:#071b0d;font-weight:700}
+    @media(max-width:650px){
+      .subscription-card{padding:20px;border-radius:22px}
+      .subscription-plans{grid-template-columns:1fr}
+      .subscription-head h2{font-size:25px}
+    }
+
+.subscribe-top-btn.premium{font-weight:700}
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="miabe-logo miabe-logo-light" src="/miabe-logo-light.png" alt="MIABE STATUS HD">
+      <img class="miabe-logo miabe-logo-dark" src="/miabe-logo-dark.png" alt="MIABE STATUS HD">
+      <div class="brand-name">MIABE STATUS HD</div>
+    </div>
+    <div class="topbar-actions">
+      <button id="topSubscribeButton" class="subscribe-top-btn" type="button" onclick="handleTopSubscribe()">S’abonner</button>
+      <button id="accountButton" class="account-btn" type="button" onclick="handleAccountButton()" aria-label="Ouvrir mon compte">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M5.7 19.2c.8-3 3-4.7 6.3-4.7s5.5 1.7 6.3 4.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        <span>Mon compte</span>
+      </button>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Changer de thème" aria-pressed="false" onclick="toggleTheme()">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20.2 14.3A8.4 8.4 0 0 1 9.7 3.8 8.5 8.5 0 1 0 20.2 14.3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M12 2.5v2M12 19.5v2M4.58 4.58l1.42 1.42M18 18l1.42 1.42M2.5 12h2M19.5 12h2M4.58 19.42 6 18M18 6l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="subscriptionModal" class="subscription-modal" aria-hidden="true">
+    <div class="subscription-card" role="dialog" aria-modal="true" aria-labelledby="subscriptionTitle">
+      <div class="subscription-head">
+        <div>
+          <h2 id="subscriptionTitle">ABONNEMENTS</h2>
+          <p id="subscriptionIntro">Accède à MIABE STATUS HD avec un traitement vidéo HD et l’envoi WhatsApp.</p>
+        </div>
+        <button class="subscription-close" type="button" onclick="closeSubscription()" aria-label="Fermer">×</button>
+      </div>
+
+      <div class="subscription-plans">
+        <div class="subscription-plan">
+          <h3>1 mois</h3>
+          <div class="subscription-price">2 000 <span>FCFA</span></div>
+          <ul>
+            <li>Traitement vidéo HD</li>
+            <li>Envoi WhatsApp</li>
+            <li>Accès Premium</li>
+            <li>Valable 30 jours</li>
+          </ul>
+          <button class="subscription-choose" data-plan="1m" type="button" onclick="chooseSubscriptionPlan('1m')">Continuer avec WhatsApp</button>
+        </div>
+
+        <div class="subscription-plan featured">
+          <h3>6 mois</h3>
+          <div class="subscription-price">10 000 <span>FCFA</span></div>
+          <ul>
+            <li>Tout du 1 mois</li>
+            <li>6 mois d’accès</li>
+            <li>Priorité de traitement</li>
+            <li>Économie sur la durée</li>
+          </ul>
+          <button class="subscription-choose" data-plan="6m" type="button" onclick="chooseSubscriptionPlan('6m')">Continuer avec WhatsApp</button>
+        </div>
+
+        <div class="subscription-plan">
+          <h3>12 mois</h3>
+          <div class="subscription-price">18 000 <span>FCFA</span></div>
+          <ul>
+            <li>Tout du 6 mois</li>
+            <li>Traitement prioritaire</li>
+            <li>Priorité lorsque le serveur est chargé</li>
+            <li>12 mois d’accès</li>
+          </ul>
+          <button class="subscription-choose" data-plan="12m" type="button" onclick="chooseSubscriptionPlan('12m')">Continuer avec WhatsApp</button>
+        </div>
+      </div>
+
+      <div id="subscriptionWhatsappStep" class="subscription-whatsapp">
+        <strong>Continuer avec WhatsApp</strong>
+        <p>Connecte ton compte WhatsApp pour continuer vers le paiement.</p>
+        <button type="button" onclick="continueSubscriptionWithWhatsApp()">Continuer avec WhatsApp</button>
+      </div>
+
+      <div id="subscriptionPayment" class="subscription-payment">
+        <div class="subscription-payment-head">
+          <div>
+            <div class="subscription-payment-title">Paiement sécurisé</div>
+            <div id="subscriptionPaymentPlan" class="subscription-note" style="margin:4px 0 0;text-align:left;"></div>
+          </div>
+          <button type="button" class="subscription-payment-back" onclick="backToSubscriptionPlans()">Retour</button>
+        </div>
+        <div class="subscription-payment-box">
+          <div id="cartfloxSoftpay"></div>
+          <div id="subscriptionPaymentStatus" class="subscription-payment-status">Préparation du paiement…</div>
+        </div>
+      </div>
+
+      <div id="subscriptionNote" class="subscription-note">Le paiement sera proposé après la connexion WhatsApp.</div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <h1>WhatsApp Status<br><span>en haute qualité.</span></h1>
+      <p>Choisis ta vidéo, lance le traitement et reçois-la sur WhatsApp dans un format optimisé pour le statut.</p>
+    </section>
+
+    <div class="pbt-auth" id="authModal" aria-hidden="true">
+      <div class="pbt-auth-card">
+        <h2>Votre essai gratuit</h2>
+        <p id="authDescription">Pour continuer à traiter vos vidéos, vérifiez votre compte avec WhatsApp.</p>
+
+        <div id="authSteps" style="margin-top:16px;padding:14px 16px;border:1px solid var(--border);border-radius:16px;background:var(--surface-2);font-size:13px;line-height:1.6;color:var(--muted)">
+          <div><strong>1.</strong> Clique sur le bouton ci-dessous.</div>
+          <div><strong>2.</strong> WhatsApp s’ouvre avec ton code.</div>
+          <div><strong>3.</strong> Envoie le message <strong>sans le modifier</strong>.</div>
+        </div>
+
+        <div class="pbt-auth-actions" style="margin-top:16px">
+          <button class="pbt-auth-primary" id="requestAuthCodeButton" type="button" onclick="requestWhatsAppAuth()">Continuer avec WhatsApp</button>
+          <button class="pbt-auth-secondary" type="button" onclick="closeAuth()">Fermer</button>
+        </div>
+
+        <div id="authMessage" class="pbt-auth-message"></div>
+      </div>
+    </div>
+
+    <div class="pbt-auth" id="accountModal" aria-hidden="true">
+      <div class="pbt-auth-card">
+        <h2>Mon compte</h2>
+        <div style="margin-top:14px">
+          <div style="font-size:12px;color:var(--muted)">Numéro WhatsApp</div>
+          <div id="accountPhone" style="font-size:16px;font-weight:650;margin-top:4px">—</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="font-size:12px;color:var(--muted)">ID utilisateur</div>
+          <div id="accountUserId" style="font-size:14px;font-weight:600;margin-top:4px;overflow-wrap:anywhere">—</div>
+        </div>
+
+        <div class="account-plan-box" id="accountPlanBox">
+          <div style="font-size:12px;color:var(--muted)">Abonnement</div>
+          <div id="accountPlan" style="font-size:21px;font-weight:750;margin-top:4px">—</div>
+          <div id="accountRemaining" style="font-size:13px;color:var(--muted);margin-top:5px">—</div>
+        </div>
+
+        <button class="pbt-subscribe" id="accountSubscribeButton" type="button"
+          onclick="startSubscription()" style="width:100%;margin-top:14px">S’abonner</button>
+
+        <button class="account-logout" type="button"
+          onclick="logoutAuth()">
+          Se déconnecter
+        </button>
+        <button class="pbt-auth-secondary" type="button"
+          onclick="closeAccount()" style="width:100%;margin-top:9px;min-height:46px;border-radius:999px">
+          Fermer
+        </button>
+      </div>
+    </div>
+
+    <section class="card" id="uploadCard">
+      <div class="upload-zone" id="uploadZone" tabindex="0">
+        <div class="upload-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.25 3.75h6.55L18.5 8.4v11.1c0 .97-.78 1.75-1.75 1.75H7.25A1.75 1.75 0 0 1 5.5 19.5v-14c0-.97.78-1.75 1.75-1.75Z" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/>
+            <path d="M13.5 3.9v4.9h4.65" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/>
+            <path d="M8.8 12.2h6.4M8.8 15.2h6.4M8.8 18.2h4.2" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Ajoute ta vidéo</h3>
+        <p>Glisse une vidéo ici ou utilise le bouton ci-dessous.</p>
+        <div class="media-buttons">
+          <button class="choose-video-button" id="chooseVideoButton" type="button">Choisir une vidéo</button>
+          <button class="media-tool-btn" id="choosePhotoButton" type="button">Ajouter une photo</button>
+        </div>
+        <div class="format-row" aria-label="Formats acceptés">
+          <span class="format">MP4</span><span class="format">MOV</span><span class="format">AVI</span><span class="format">MKV</span><span class="format">WEBM</span><span class="format">M4V</span>
+        </div>
+      </div>
+      <input id="fileInput" type="file" multiple accept="video/*,.mp4,.mov,.avi,.mkv,.wmv,.3gp,.webm,.m4v,.mpeg,.mpg,.flv,.ts,.m2ts,.mts">
+
+      <input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+
+      <div class="photo-options" id="photoOptions">
+        <div class="photo-options-row">
+          <label for="photoDuration"><strong>Durée</strong></label>
+          <div class="photo-duration-wrap">
+          <select id="photoDuration" aria-label="Durée de la vidéo créée à partir de la photo">
+            <option value="6">6 secondes</option>
+            <option value="7">7 secondes</option>
+            <option value="8">8 secondes</option>
+            <option value="9">9 secondes</option>
+            <option value="10">10 secondes</option>
+            <option value="11">11 secondes</option>
+            <option value="12" selected>12 secondes</option>
+            <option value="13">13 secondes</option>
+            <option value="14">14 secondes</option>
+            <option value="15">15 secondes</option>
+          </select>
+          </div>
+          <button class="media-tool-btn green" id="createPhotoVideoButton" type="button">Créer la vidéo</button>
+        </div>
+        <div class="photo-status" id="photoStatus"></div>
+        <div class="photo-progress" id="photoProgress"><div class="photo-progress-fill" id="photoProgressFill"></div></div>
+      </div>
+
+      <div class="preview-panel" id="previewPanel">
+        <img class="preview-thumbnail" id="previewThumbnail" alt="Miniature du fichier sélectionné">
+      </div>
+
+      <div class="caption-section" id="captionSection">
+        <label class="caption-label" for="captionInput">Texte à envoyer avec la vidéo <span style="font-weight:400;color:var(--muted)">(facultatif)</span></label>
+        <span class="caption-help">Écris le message que tu veux. Il sera ajouté à la première vidéo envoyée sur WhatsApp.</span>
+        <textarea id="captionInput" maxlength="1000" placeholder="Écris ton texte ici…"></textarea>
+        <div class="caption-counter"><span id="captionCounter">0 / 1000</span></div>
+      </div>
+
+      <div class="files-list" id="filesList">
+        <div id="filesContainer"></div>
+        <div class="file-summary"><span>Taille totale</span><strong id="totalSize">0 MB</strong></div>
+        <div id="longClipsRow" class="quality-row">
+          <label class="q-opt">
+            <input type="radio" name="quality" value="hd" checked>
+            <strong>HD</strong><span>1080p · clips optimisés</span>
+          </label>
+          <label class="q-opt">
+            <input type="radio" name="quality" value="long">
+            <strong>Clips plus longs</strong><span>720p · durée étendue</span>
+          </label>
+        </div>
+        <button class="primary-btn" id="compressBtn" type="button" onclick="startCompression()" disabled>Traiter la vidéo</button>
+      </div>
+    </section>
+
+    <section class="card progress-card" id="progressCard">
+      <div class="progress-head">
+        <div class="card-title" id="progressHeading" style="margin:0">Traitement</div>
+        <div class="progress-pct" id="progressPct">0%</div>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="mainProgressFill"></div></div>
+      <div class="status" id="statusMessage"><span id="statusIcon"></span> <span id="statusText">Préparation…</span></div>
+      <div class="steps">
+        <div class="step active" id="step1Indicator">Envoi</div>
+        <div class="step" id="step2Indicator">Optimisation</div>
+        <div class="step" id="step3Indicator">Découpage</div>
+        <div class="step" id="step4Indicator">Finalisation</div>
+        <div class="step" id="step5Indicator">Prêt</div>
+      </div>
+      <div id="currentFileBox" style="display:none;margin-top:16px;padding:11px 13px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)">
+        <div style="font-size:11px;color:var(--muted)">Fichier en cours</div>
+        <div id="currentFileName" style="font-size:13px;margin-top:3px;overflow-wrap:anywhere"></div>
+      </div>
+    </section>
+
+    <section class="card activation-section" id="activationSection">
+      <div class="card-title" id="activationHeading">Activation WhatsApp</div>
+      <div class="code-display">
+        <div class="code-label">Code d’activation</div>
+        <div class="code-value" id="activationCode">—</div>
+        <button class="code-copy" type="button" onclick="copyCode()">Copier le code</button>
+        <div id="timerBox" style="margin-top:16px">
+          <div style="font-size:12px;color:var(--muted)">Code valable pendant</div>
+          <div id="timerDisplay" style="font-size:28px;font-weight:800;letter-spacing:3px;margin-top:4px">05:00</div>
+        </div>
+        <div id="expiredBox" style="display:none;margin-top:16px;padding:14px;border:1px solid var(--danger);border-radius:12px">
+          <strong>Code expiré</strong>
+          <div style="color:var(--muted);font-size:13px;margin-top:5px">Relance le traitement pour obtenir un nouveau code.</div>
+          <button class="secondary-btn" type="button" onclick="resetApp()">Recommencer</button>
+        </div>
+      </div>
+      <div id="fileCountInfo" style="display:none;color:var(--muted);font-size:13px;text-align:center;margin-bottom:15px">La vidéo a été découpée en <strong id="clipCount">?</strong> clips.</div>
+      <div class="activation-steps">
+        <div class="step-item"><div class="step-num">1</div><div>Ouvre WhatsApp avec le bouton ci-dessous.</div></div>
+        <div class="step-item"><div class="step-num">2</div><div>Le code est déjà préparé dans le message.</div></div>
+        <div class="step-item"><div class="step-num">3</div><div>Envoie le message.</div></div>
+      </div>
+      <button class="wa-btn" id="waButton" type="button" onclick="openWhatsApp()">Ouvrir WhatsApp</button>
+    </section>
+
+    <section class="card success-section" id="successSection">
+      <div class="success-title" id="successHeading">Vidéo prête</div>
+      <div class="success-subtitle">Enregistre la vidéo reçue sur ton téléphone, puis envoie cette nouvelle copie dans un chat avant de la transférer vers ton Statut pour limiter la recompression de WhatsApp.</div>
+      <div class="upload-instructions">
+        <div class="step-item"><div class="step-num">1</div><div>Ouvre le message reçu de <strong>MIABE STATUS HD</strong>.</div></div>
+        <div class="step-item"><div class="step-num">2</div><div>Enregistre la vidéo sur ton téléphone.</div></div>
+        <div class="step-item"><div class="step-num">3</div><div>Envoie cette copie dans un chat.</div></div>
+        <div class="step-item"><div class="step-num">4</div><div>Transfère cette copie vers ton Statut.</div></div>
+      </div>
+      <div class="share-buttons" style="margin-top:20px">
+        <button class="primary-btn" type="button" onclick="resetApp()">Traiter une autre vidéo</button>
+        <button class="secondary-btn" type="button" onclick="shareApp()">Partager</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div aria-label="Logo MIABE STATUS">
+      <img class="miabe-logo miabe-logo-light" src="/miabe-logo-light.png" alt="MIABE STATUS HD">
+      <img class="miabe-logo miabe-logo-dark" src="/miabe-logo-dark.png" alt="MIABE STATUS HD">
+    </div>
+    <div style="margin-top:9px">WhatsApp Status en haute qualité.</div>
+
+    <div class="footer-links" aria-label="Liens du site">
+      <button class="footer-link" type="button" onclick="openInfoModal('privacyModal')">Politique de confidentialité</button>
+      <button class="footer-link" type="button" onclick="openInfoModal('termsModal')">Conditions d’utilisation</button>
+      <button class="footer-link" type="button" onclick="openInfoModal('supportModal')">Support client</button>
+      <button class="footer-link" type="button" onclick="openInfoModal('aboutModal')">À propos</button>
+    </div>
+
+    <div class="footer-credit">Conçu et développé par <strong>Trésor</strong> &amp; <strong>Mr Kokou</strong>.</div>
+    <div class="footer-copy">© 2026 MIABE STATUS HD. Tous droits réservés.</div>
+  </footer>
+
+  <div class="info-modal" id="privacyModal" aria-hidden="true" onclick="if(event.target===this) closeInfoModal('privacyModal')">
+    <div class="info-card" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+      <div class="info-head"><div class="info-title" id="privacyTitle">Politique de confidentialité</div><button class="info-close" type="button" onclick="closeInfoModal('privacyModal')" aria-label="Fermer">×</button></div>
+      <p>MIABE STATUS HD respecte la confidentialité de ses utilisateurs. Les informations nécessaires au fonctionnement du service sont utilisées uniquement pour l’authentification, le traitement des fichiers, la gestion du compte et l’envoi des fichiers sur WhatsApp.</p>
+      <h3>Fichiers envoyés</h3>
+      <p>Les vidéos et photos transmises au service sont traitées pour effectuer la conversion demandée. Elles peuvent être conservées temporairement pour permettre le traitement et l’envoi, puis supprimées selon la politique de conservation du service.</p>
+      <h3>Numéro WhatsApp</h3>
+      <p>Lors de l’authentification, le numéro WhatsApp utilisé peut être associé au compte afin de gérer l’accès, l’essai gratuit et, le cas échéant, l’abonnement.</p>
+      <h3>Sécurité</h3>
+      <p>Nous mettons en place des mesures techniques destinées à protéger les comptes, les fichiers et les informations utilisées par le service. Aucun système connecté à Internet ne peut toutefois garantir une sécurité absolue.</p>
+    </div>
+  </div>
+
+  <div class="info-modal" id="termsModal" aria-hidden="true" onclick="if(event.target===this) closeInfoModal('termsModal')">
+    <div class="info-card" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+      <div class="info-head"><div class="info-title" id="termsTitle">Conditions d’utilisation</div><button class="info-close" type="button" onclick="closeInfoModal('termsModal')" aria-label="Fermer">×</button></div>
+      <p>En utilisant MIABE STATUS HD, vous acceptez d’utiliser le service uniquement pour des contenus que vous êtes autorisé à traiter et à partager.</p>
+      <h3>Utilisation responsable</h3>
+      <ul><li>Ne transmettez pas de contenu illégal ou portant atteinte aux droits d’autrui.</li><li>N’utilisez pas le service pour contourner les restrictions ou les systèmes de sécurité d’un tiers.</li><li>Vous restez responsable des fichiers que vous envoyez et de leur contenu.</li></ul>
+      <h3>Disponibilité</h3>
+      <p>Le service peut être temporairement indisponible pour maintenance, mise à jour ou problème technique.</p>
+    </div>
+  </div>
+
+  <div class="info-modal" id="supportModal" aria-hidden="true" onclick="if(event.target===this) closeInfoModal('supportModal')">
+    <div class="info-card" role="dialog" aria-modal="true" aria-labelledby="supportTitle">
+      <div class="info-head"><div class="info-title" id="supportTitle">Support client</div><button class="info-close" type="button" onclick="closeInfoModal('supportModal')" aria-label="Fermer">×</button></div>
+      <p>Un problème avec ton compte, ton essai, l’envoi WhatsApp ou le traitement d’une vidéo ? Contacte le support MIABE STATUS HD.</p>
+      <p>Pour accélérer l’assistance, indique ton numéro WhatsApp associé au compte et décris brièvement le problème rencontré.</p>
+      <a class="support-btn" href="https://wa.me/22872204628?text=Bonjour%20MIABE%20STATUS%20HD%2C%20j%27ai%20besoin%20d%27aide." target="_blank" rel="noopener noreferrer">Contacter le support sur WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="info-modal" id="aboutModal" aria-hidden="true" onclick="if(event.target===this) closeInfoModal('aboutModal')">
+    <div class="info-card" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+      <div class="info-head"><div class="info-title" id="aboutTitle">À propos de MIABE STATUS HD</div><button class="info-close" type="button" onclick="closeInfoModal('aboutModal')" aria-label="Fermer">×</button></div>
+      <p>MIABE STATUS HD est un service conçu pour préparer des vidéos et des photos afin de faciliter leur publication sur le Statut WhatsApp.</p>
+      <p>Le projet est conçu et développé par <strong>Trésor</strong> &amp; <strong>Mr Kokou</strong>.</p>
+    </div>
+  </div>
+
+<script src="https://cartflox.com/cartflox-softpay.js"></script>
+<script>
+  // Cartflox Sandbox — clé PUBLIQUE. Tu peux laisser cette clé dans le frontend.
+  const CARTFLOX_PUBLIC_KEY = "af_test_pub_52f4d87549f7619ec93d8119d5272071e43e626f9d9f74ef";
+</script>
+<script>
+  function openInfoModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add('visible');
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function closeInfoModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.remove('visible');
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    document.querySelectorAll('.info-modal.visible').forEach(modal => closeInfoModal(modal.id));
+  });
+
+  let wakeLock = null;
+
+  async function requestWakeLock() {
+    try {
+      if ('wakeLock' in navigator) {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Screen wake lock active ✅');
+      }
+    } catch (err) {
+      console.log('Wake lock not available:', err.message);
+    }
+  }
+
+  function releaseWakeLock() {
+    if (wakeLock) {
+      wakeLock.release();
+      wakeLock = null;
+      console.log('Wake lock released');
+    }
+  }
+
+  // ✅ Backend URL
+  const BACKEND_URL = window.POWERD_BACKEND_URL || window.location.origin;
+
+  let files = [];
+  let waLink = '';
+  let activationCode = '';
+  let fileCount = 0;
+  const MAX_SIZE = 300 * 1024 * 1024;
+  const MAX_FILES = 3;
+
+  const uploadZone = document.getElementById('uploadZone');
+  const fileInput = document.getElementById('fileInput');
+
+  const photoInput = document.getElementById('photoInput');
+  const choosePhotoButton = document.getElementById('choosePhotoButton');
+  const photoOptions = document.getElementById('photoOptions');
+  const photoDuration = document.getElementById('photoDuration');
+  const createPhotoVideoButton = document.getElementById('createPhotoVideoButton');
+  const photoStatus = document.getElementById('photoStatus');
+  const photoProgress = document.getElementById('photoProgress');
+  const photoProgressFill = document.getElementById('photoProgressFill');
+  const previewPanel = document.getElementById('previewPanel');
+  const previewThumbnail = document.getElementById('previewThumbnail');
+  let previewObjectUrl = '';
+  let photoObjectUrl = '';
+
+  choosePhotoButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    photoInput.click();
+  });
+
+  photoInput.addEventListener('change', async (e) => {
+    const photo = e.target.files && e.target.files[0];
+    photoInput.value = '';
+    if (!photo) return;
+    if (!photo.type.startsWith('image/')) {
+      alert('Choisis une image JPG, PNG ou WebP.');
+      return;
+    }
+    if (photoObjectUrl) URL.revokeObjectURL(photoObjectUrl);
+    photoObjectUrl = URL.createObjectURL(photo);
+    previewThumbnail.hidden = false;
+    previewThumbnail.src = photoObjectUrl;
+    previewThumbnail.alt = `Miniature · ${photo.name}`;
+    previewPanel.classList.add('visible');
+    photoOptions.classList.add('visible');
+    photoStatus.textContent = 'Choisis la durée puis crée ta vidéo.';
+  });
+
+  async function showVideoPreview(file) {
+    if (!file) return;
+    if (previewObjectUrl) URL.revokeObjectURL(previewObjectUrl);
+    previewObjectUrl = URL.createObjectURL(file);
+
+    previewThumbnail.hidden = false;
+    previewThumbnail.removeAttribute('src');
+    previewPanel.classList.add('visible');
+
+    // Generate one static frame. The video itself is never displayed or played.
+    const video = document.createElement('video');
+    video.preload = 'metadata';
+    video.muted = true;
+    video.playsInline = true;
+    video.src = previewObjectUrl;
+
+    try {
+      await new Promise((resolve, reject) => {
+        video.addEventListener('loadedmetadata', resolve, {once:true});
+        video.addEventListener('error', () => reject(new Error('Impossible de créer la miniature.')), {once:true});
+      });
+      const seekTime = Number.isFinite(video.duration) && video.duration > 0
+        ? Math.min(0.15, Math.max(0, video.duration / 20))
+        : 0;
+      await new Promise((resolve) => {
+        const done = () => resolve();
+        video.addEventListener('seeked', done, {once:true});
+        try { video.currentTime = seekTime; } catch (_) { resolve(); }
+      });
+
+      const canvas = document.createElement('canvas');
+      const sourceW = video.videoWidth || 720;
+      const sourceH = video.videoHeight || 1280;
+      const maxW = 720;
+      const scale = Math.min(1, maxW / sourceW);
+      canvas.width = Math.max(2, Math.round(sourceW * scale));
+      canvas.height = Math.max(2, Math.round(sourceH * scale));
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      previewThumbnail.src = canvas.toDataURL('image/jpeg', 0.88);
+    } catch (err) {
+      // Keep the panel useful even if the browser cannot decode the source.
+      previewThumbnail.src = '';
+      previewThumbnail.alt = `Miniature indisponible · ${file.name}`;
+    }
+  }
+
+  async function createVideoFromPhoto(photoFile, seconds) {
+    if (!window.MediaRecorder) throw new Error('Ton navigateur ne prend pas en charge la création vidéo à partir d’une photo. Utilise Chrome ou Edge récent.');
+    const bitmap = await createImageBitmap(photoFile);
+
+    // Preserve the ORIGINAL aspect ratio.
+    // Square stays square, landscape stays landscape, portrait stays portrait.
+    // Never force a photo into 9:16 and never crop it.
+    const sourceW = bitmap.width;
+    const sourceH = bitmap.height;
+    const sourceRatio = sourceW / sourceH;
+    const MAX_SIDE = 1280;
+    let targetW, targetH;
+    if (sourceW >= sourceH) {
+      targetW = MAX_SIDE;
+      targetH = Math.max(1, Math.round(targetW / sourceRatio));
+    } else {
+      targetH = MAX_SIDE;
+      targetW = Math.max(1, Math.round(targetH * sourceRatio));
+    }
+    // Keep dimensions even for video encoders.
+    targetW = Math.max(2, targetW - (targetW % 2));
+    targetH = Math.max(2, targetH - (targetH % 2));
+
+    const canvas = document.createElement('canvas');
+    canvas.width = targetW;
+    canvas.height = targetH;
+    const ctx = canvas.getContext('2d', {alpha:false});
+    const stream = canvas.captureStream(30);
+
+    const mimeCandidates = [
+      'video/webm;codecs=vp9',
+      'video/webm;codecs=vp8',
+      'video/webm'
+    ];
+    const mimeType = mimeCandidates.find(type => MediaRecorder.isTypeSupported(type));
+    if (!mimeType) throw new Error('Le format vidéo de ton navigateur n’est pas compatible. Utilise Chrome ou Edge.');
+
+    const recorder = new MediaRecorder(stream, {mimeType, videoBitsPerSecond: 4000000});
+    const chunks = [];
+    recorder.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+
+    const recordPromise = new Promise((resolve, reject) => {
+      recorder.onerror = () => reject(new Error('Impossible de créer la vidéo à partir de la photo.'));
+      recorder.onstop = () => resolve(new Blob(chunks, {type:mimeType}));
+    });
+
+    const baseW = targetW;
+    const baseH = targetH;
+    const start = performance.now();
+    const durationMs = seconds * 1000;
+    recorder.start(100);
+    photoProgress.classList.add('visible');
+    createPhotoVideoButton.disabled = true;
+
+    await new Promise(resolve => {
+      function draw(now) {
+        const elapsed = now - start;
+        const progress = Math.min(1, elapsed / durationMs);
+        // Subtle zoom while preserving the original aspect ratio.
+        const zoom = 1 + progress * 0.02;
+        const drawW = baseW * zoom;
+        const drawH = baseH * zoom;
+        const x = (targetW - drawW) / 2;
+        const y = (targetH - drawH) / 2;
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, targetW, targetH);
+        ctx.drawImage(bitmap, x, y, drawW, drawH);
+        photoProgressFill.style.width = `${Math.round(progress * 100)}%`;
+        if (progress < 1) requestAnimationFrame(draw);
+        else resolve();
+      }
+      requestAnimationFrame(draw);
+    });
+
+    recorder.stop();
+    const blob = await recordPromise;
+    stream.getTracks().forEach(track => track.stop());
+    bitmap.close();
+    photoProgress.classList.remove('visible');
+    photoProgressFill.style.width = '0%';
+    createPhotoVideoButton.disabled = false;
+    return new File([blob], `POWERD-BY-TRESOR-${seconds}s.webm`, {type:'video/webm', lastModified:Date.now()});
+  }
+
+  createPhotoVideoButton.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    const photo = photoObjectUrl ? await fetch(photoObjectUrl).then(r => r.blob()).catch(() => null) : null;
+    if (!photo) return;
+    try {
+      const seconds = Number(photoDuration.value);
+      if (!Number.isInteger(seconds) || seconds < 6 || seconds > 15) throw new Error('La durée doit être comprise entre 6 et 15 secondes.');
+      photoStatus.textContent = `Création de la vidéo de ${seconds} secondes…`;
+      const file = await createVideoFromPhoto(photo, seconds);
+      addFiles([file]);
+      photoOptions.classList.remove('visible');
+      photoStatus.textContent = 'Vidéo créée. Tu peux maintenant la traiter.';
+    } catch (err) {
+      photoProgress.classList.remove('visible');
+      photoProgressFill.style.width = '0%';
+      createPhotoVideoButton.disabled = false;
+      photoStatus.textContent = err.message;
+      alert(err.message);
+    }
+  });
+
+  uploadZone.addEventListener('click', () => fileInput.click());
+
+  uploadZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadZone.classList.add('dragover');
+  });
+
+  uploadZone.addEventListener('dragleave', () => 
+    uploadZone.classList.remove('dragover')
+  );
+
+  uploadZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    // Don't rely on f.type alone — it's empty for .mkv on many systems, which
+    // silently dropped valid videos on drag-and-drop.
+    const VIDEO_EXT = /\.(mp4|mov|avi|mkv|3gp|3g2|wmv|webm|m4v|mpeg|mpg|flv|ts|m2ts|mts)$/i;
+    const dropped = Array.from(e.dataTransfer.files)
+      .filter(f => (f.type && f.type.startsWith('video/')) || VIDEO_EXT.test(f.name || ''));
+    addFiles(dropped);
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    addFiles(Array.from(e.target.files));
+    fileInput.value = '';
+  });
+
+  function addFiles(newFiles) {
+    for (const file of newFiles) {
+      if (files.length >= MAX_FILES) {
+        alert(`Maximum ${MAX_FILES} vidéos autorisées !\n\nSupprime d’abord une vidéo.`);
+        break;
+      }
+      const totalSize = files.reduce((s, f) => s + f.size, 0);
+      if (totalSize + file.size > MAX_SIZE) {
+        alert(`Impossible d’ajouter ${file.name} !\nLa taille totale dépasserait 300 Mo.`);
+        break;
+      }
+      files.push(file);
+      if (files.length === 1 && ((file.type && file.type.startsWith('video/')) || /\.(mp4|mov|avi|mkv|3gp|3g2|wmv|webm|m4v|mpeg|mpg|flv|ts|m2ts|mts)$/i.test(file.name || ''))) {
+        showVideoPreview(file);
+      }
+    }
+    renderFiles();
+  }
+
+  const captionInput = document.getElementById('captionInput');
+  const captionCounter = document.getElementById('captionCounter');
+  if (captionInput) {
+    captionInput.addEventListener('input', () => {
+      captionCounter.textContent = `${captionInput.value.length} / 1000`;
+    });
+  }
+
+  function renderFiles() {
+    const container = document.getElementById('filesContainer');
+    const filesList = document.getElementById('filesList');
+    const compressBtn = document.getElementById('compressBtn');
+
+    if (files.length === 0) {
+      filesList.classList.remove('visible');
+      compressBtn.disabled = true;
+      var _captionHide = document.getElementById('captionSection'); if (_captionHide) _captionHide.style.display = 'none';
+      var _lcHide = document.getElementById('longClipsRow'); if (_lcHide) _lcHide.style.display = 'none';
+      return;
+    }
+
+    filesList.classList.add('visible');
+    compressBtn.disabled = false;
+    var _captionShow = document.getElementById('captionSection'); if (_captionShow) _captionShow.style.display = 'block';
+    var _lcShow = document.getElementById('longClipsRow'); if (_lcShow) _lcShow.style.display = 'flex';
+
+    container.querySelectorAll('.file-thumb').forEach(v => { try { URL.revokeObjectURL(v.src); } catch (_) {} });
+    container.innerHTML = files.map((file, index) => `
+      <div class="file-item">
+        <div class="file-thumb-wrap"><video class="file-thumb" src="${URL.createObjectURL(file)}" muted playsinline preload="metadata"></video></div>
+        <div class="file-info">
+          <div class="file-name">${file.name}</div>
+          <div class="file-size">${formatSize(file.size)}</div>
+        </div>
+        <button class="file-remove" aria-label="Supprimer ${file.name}" onclick="removeFile(${index})">\u{2715}</button>
+      </div>
+    `).join('');
+
+    const totalSize = files.reduce((s, f) => s + f.size, 0);
+    document.getElementById('totalSize').textContent = formatSize(totalSize);
+    container.querySelectorAll('.file-thumb').forEach(video => {
+      video.addEventListener('loadedmetadata', () => {
+        try { video.currentTime = Math.min(0.1, Math.max(0, video.duration / 20)); } catch (_) {}
+      });
+      video.addEventListener('seeked', () => { video.pause(); });
+    });
+  }
+
+  function removeFile(index) {
+    files.splice(index, 1);
+    renderFiles();
+  }
+
+  function clearFiles() {
+    files = [];
+    renderFiles();
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  // ========================
+  // REAL UPLOAD WITH PROGRESS
+  // ========================
+  // Upload to CF Worker with real progress
+  const CHUNK_SIZE = 50 * 1024 * 1024; // 50MB chunks
+
+  async function uploadToWorkerWithProgress(uploadUrl, file, onProgress) {
+    // POWERD BY TRESOR & MR KOKOU V2 uses direct local/server storage. No Cloudflare Worker
+    // or R2 is required. XHR keeps real upload progress on large files.
+    return simpleUpload(uploadUrl, file, onProgress);
+  }
+
+  function simpleUpload(uploadUrl, file, onProgress) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.upload.addEventListener('progress', (e) => {
+        if (e.lengthComputable) onProgress((e.loaded / e.total) * 100);
+      });
+      xhr.addEventListener('load', () => {
+        if (xhr.status >= 200 && xhr.status < 300) resolve();
+        else reject(new Error(`Upload failed: ${xhr.status}`));
+      });
+      xhr.addEventListener('error', () => reject(new Error('Network error during upload')));
+      xhr.addEventListener('abort', () => reject(new Error('Upload cancelled')));
+      xhr.open('PUT', uploadUrl);
+      xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+      xhr.send(file);
+    });
+  }
+
+  let pbtPaymentRequired = false;
+  let pbtPaymentRef = localStorage.getItem('pbt_paid_ref') || '';
+
+  async function loadPaymentConfig() {
+    try {
+      const r = await fetch(`${BACKEND_URL}/api/payment/config`, { cache: 'no-store' });
+      const data = await r.json();
+      pbtPaymentRequired = data.required === true;
+      const card = document.getElementById('paymentCard');
+      const desc = document.getElementById('paymentDescription');
+      if (card && !pbtPaymentRequired) card.style.display = 'none';
+      if (desc && pbtPaymentRequired) desc.textContent = `Traitement vidéo · ${Number(data.amount).toLocaleString('fr-FR')} FCFA`;
+    } catch (e) { pbtPaymentRequired = false; }
+
+    const url = new URL(window.location.href);
+    const ref = url.searchParams.get('payment_ref');
+    if (ref) {
+      const status = document.getElementById('paymentStatus');
+      if (status) status.textContent = 'Vérification du paiement…';
+      try {
+        const r = await fetch(`${BACKEND_URL}/api/payment/status/${encodeURIComponent(ref)}`, { cache: 'no-store' });
+        const data = await r.json();
+        if (data.status === 'PAID') {
+          pbtPaymentRef = ref;
+          localStorage.setItem('pbt_paid_ref', ref);
+          if (status) status.textContent = '✓ Paiement confirmé. Tu peux lancer le traitement.';
+        } else if (status) status.textContent = 'Paiement en attente de confirmation. Recharge dans quelques secondes.';
+      } catch (e) { if (status) status.textContent = 'Impossible de vérifier le paiement pour le moment.'; }
+      history.replaceState({}, '', window.location.pathname + window.location.hash);
+    }
+  }
+
+  async function ensurePayment() {
+    if (!pbtPaymentRequired) return '';
+    if (pbtPaymentRef) {
+      try {
+        const r = await fetch(`${BACKEND_URL}/api/payment/status/${encodeURIComponent(pbtPaymentRef)}`, { cache: 'no-store' });
+        const data = await r.json();
+        if (data.status === 'PAID') return pbtPaymentRef;
+      } catch (e) {}
+      localStorage.removeItem('pbt_paid_ref'); pbtPaymentRef = '';
+    }
+    const name = document.getElementById('paymentName')?.value.trim();
+    const phone = document.getElementById('paymentPhone')?.value.trim();
+    const email = document.getElementById('paymentEmail')?.value.trim();
+    if (!name || !phone) throw new Error('Entre ton nom et ton numéro Mobile Money avant de payer.');
+    const r = await fetch(`${BACKEND_URL}/api/payment/init`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,phone,email}) });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Impossible de créer le paiement.');
+    if (data.required && data.paymentUrl) {
+      localStorage.setItem('pbt_pending_ref', data.transactionId);
+      window.location.href = data.paymentUrl;
+      return null;
+    }
+    return data.transactionId || '';
+  }
+
+
+  function handleTopSubscribe() {
+    if (typeof openSubscription === 'function') {
+      openSubscription();
+      return;
+    }
+    if (typeof startSubscription === 'function') {
+      startSubscription();
+      return;
+    }
+    alert('Le service d’abonnement sera bientôt disponible.');
+  }
+
+  async function handleAccountButton() {
+    const access = await getAccountAccess();
+
+    if (access?.authenticated) {
+      updateAccountUI(access);
+      openAccount();
+      return;
+    }
+
+    // Before authentication, keep the header discreet: clicking "Mon compte"
+    // simply starts the same WhatsApp authentication flow.
+    openAuth();
+  }
+
+  function setTheme(theme) {
+    const root = document.documentElement;
+    root.dataset.theme = theme;
+    localStorage.setItem('pbt_theme', theme);
+    const btn = document.getElementById('themeToggle');
+    if (btn) {
+      const dark = theme === 'dark';
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.setAttribute('aria-label', dark ? 'Passer en mode clair' : 'Passer en mode sombre');
+      btn.setAttribute('title', dark ? 'Mode clair' : 'Mode sombre');
+    }
+  }
+
+  function toggleTheme() {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+  }
+
+  async function startCompression() {
+    if (files.length === 0) return;
+
+    // The first treatment is available without login. After that, the server
+    // requires the silent WhatsApp authentication flow before a new treatment.
+    const access = await getAccountAccess();
+    if (access && access.authenticated && access.access) {
+      // Already authenticated: continue normally.
+    } else if (access && access.status === 'FIRST_USE') {
+      // First treatment: no authentication needed.
+    } else if (access && access.status === 'EXPIRED') {
+      openAccount();
+      return;
+    } else {
+      openAuth();
+      return;
+    }
+
+    try {
+      const h = await fetch(`${BACKEND_URL}/api/health`, { cache: 'no-store' });
+      const hj = await h.json().catch(() => ({}));
+      if (hj && hj.baileys && hj.baileys !== 'connected') {
+        alert('La livraison WhatsApp est temporairement hors ligne. Réessaie dans quelques minutes.');
+        return;
+      }
+    } catch (e) {}
+
+    document.getElementById('progressCard').style.display = 'block';
+    document.getElementById('compressBtn').disabled = true;
+    setTimeout(() => document.getElementById('progressCard').scrollIntoView({ behavior:'smooth', block:'start' }), 100);
+    updateProgressBar(0); setStep(1); setStatus('', 'Préparation de l’envoi…');
+
+    try {
+      await requestWakeLock();
+      const data = await uploadAndProcess(files);
+      activationCode = data.activationCode;
+      // WhatsApp must open with ONLY the activation code pre-filled.
+      const cleanWaLink = String(data.waLink || '').split('?')[0];
+      waLink = `${cleanWaLink}?text=${encodeURIComponent(activationCode)}`;
+      fileCount = data.fileCount;
+
+      // The first successful treatment unlocks the account requirement
+      // for all subsequent uses on this browser/device.
+      localStorage.setItem('pbt_first_use_done', '1');
+
+      completeProgress();
+      setTimeout(() => showActivation(), 1000);
+    } catch (error) {
+      stopProcessingSimulation();
+      if (error.message.includes('429')) alert(' Trop de demandes. Attends un moment puis réessaie.');
+      else alert(error.message);
+      document.getElementById('progressCard').style.display = 'none';
+      document.getElementById('compressBtn').disabled = false;
+    } finally { releaseWakeLock(); }
+  }
+
+  async function uploadAndProcess(filesToProcess) {
+    // ✅ Keep screen awake during upload
+    await requestWakeLock();
+
+    try {
+      const totalFiles = filesToProcess.length;
+
+      setStatus('', 'Envoi des vidéos…');
+      setStep(1);
+
+      const progressPerFile = new Array(totalFiles).fill(0);
+
+      // ── Upload ALL files in PARALLEL ──
+      const allFileInfos = await Promise.all(
+        filesToProcess.map(async (file, i) => {
+          showCurrentFile(file.name);
+
+          // ✅ Add timeout to upload URL request
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 60000); // 1 min timeout
+
+          try {
+            const urlRes = await fetch(`${BACKEND_URL}/api/upload-url`, {
+              credentials: 'include',
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                filename: file.name,
+                contentType: file.type,
+                fileSize: file.size
+              }),
+              signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!urlRes.ok) {
+              const err = await urlRes.json();
+              throw new Error(err.error || 'Impossible d’obtenir le lien d’envoi.');
+            }
+
+            const { uploadUrl, key } = await urlRes.json();
+
+            // Upload with progress tracking
+            await uploadToWorkerWithProgress(uploadUrl, file, (pct) => {
+              progressPerFile[i] = pct;
+              const overall = progressPerFile.reduce((a, b) => a + b, 0) / totalFiles;
+              const videoLabel = totalFiles === 1 ? 'video' : 'videos';
+              updateProgressBar(overall * 0.5);
+              setStatus('', `Envoi de ${totalFiles} ${videoLabel}… ${Math.round(overall)} %`);
+            });
+
+            console.log(`✅ Uploaded ${file.name}`);
+
+            // Keep an explicit duration hint for videos created from a photo.
+            // MediaRecorder WebM files can report an incorrect duration (often ~2s)
+            // in ffprobe even when the actual recording was made for 6–15s.
+            const durationMatch = String(file.name || '').match(/^POWERD-BY-TRESOR-(\d+(?:\.\d+)?)s\.webm$/i);
+            const durationHint = durationMatch ? Number(durationMatch[1]) : null;
+            return { key, originalName: file.name, size: file.size, durationHint };
+
+          } catch (err) {
+            clearTimeout(timeoutId);
+            throw err;
+          }
+        })
+      );
+
+      // ── PHASE 2: Process on server ──
+      setStatus('', 'Optimisation de la vidéo…');
+      setStep(2);
+      updateProgressBar(50);
+
+      const totalSizeMB = filesToProcess.reduce((s, f) => s + f.size, 0) / (1024 * 1024);
+      startProcessingSimulation(totalSizeMB);
+
+      // Kick off processing. `async: true` makes the server answer immediately
+      // with a jobId and encode in the background, then we poll for the result.
+      //
+      // Why: holding one request open for the whole encode broke in three ways —
+      // Azure App Service cuts any request at ~240s, mobile browsers suspend
+      // backgrounded tabs (switching apps mid-compress surfaced "Failed to
+      // fetch"), and any network blip lost the activation code even though the
+      // server had finished. Polling separates "work finished" from "client
+      // currently connected".
+      const startController = new AbortController();
+      const startTimeoutId = setTimeout(() => startController.abort(), 60000);
+
+      let startBody;
+      try {
+        const processRes = await fetch(`${BACKEND_URL}/api/process`, {
+          credentials: 'include',
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+            files: allFileInfos,
+            longClips: (document.querySelector('input[name="quality"]:checked') || {}).value === 'long',
+            caption: (document.getElementById('captionInput')?.value || '').trim().slice(0, 1000),
+            async: true
+          }),
+          signal: startController.signal
+        });
+        clearTimeout(startTimeoutId);
+
+        if (!processRes.ok) {
+          const err = await processRes.json().catch(() => ({}));
+          stopProcessingSimulation();
+          throw new Error(err.error || 'Le traitement a échoué.');
+        }
+        startBody = await processRes.json();
+      } catch (err) {
+        clearTimeout(startTimeoutId);
+        stopProcessingSimulation();
+        throw err;
+      }
+
+      // An older backend (or a deploy still rolling out) ignores `async` and
+      // returns the finished result directly — accept that too.
+      if (!startBody.jobId) {
+        stopProcessingSimulation();
+        updateProgressBar(98);
+        setStatus('✅', 'Presque terminé…');
+        return startBody;
+      }
+
+      const result = await pollJobUntilDone(startBody.jobId);
+      stopProcessingSimulation();
+      updateProgressBar(98);
+      setStatus('✅', 'Presque terminé…');
+      return result;
+
+    } finally {
+      releaseWakeLock();
+    }
+  }
+
+  // ========================
+  // JOB POLLING
+  // ========================
+  // Waits `ms`, but returns early if the tab becomes visible again — so coming
+  // back from another app resumes immediately instead of sitting out the delay.
+  function sleepOrVisible(ms) {
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        document.removeEventListener('visibilitychange', onVisible);
+        resolve();
+      };
+      const onVisible = () => { if (!document.hidden) finish(); };
+      const timer = setTimeout(finish, ms);
+      document.addEventListener('visibilitychange', onVisible);
+    });
+  }
+
+  // Poll a background job to completion.
+  //
+  // The important behaviour: a failed poll is NOT an error. While the tab is
+  // backgrounded the browser may refuse or kill fetches, which is exactly what
+  // produced "Failed to fetch" before. Those are swallowed and retried, because
+  // the server keeps encoding regardless of whether we're connected.
+  async function pollJobUntilDone(jobId) {
+    const POLL_INTERVAL_MS = 3000;
+    const MAX_WAIT_MS = 20 * 60 * 1000;
+    const MAX_CONSECUTIVE_NETWORK_FAILURES = 40; // ~2 min of solid failure
+    const startedAt = Date.now();
+    let consecutiveFailures = 0;
+
+    while (Date.now() - startedAt < MAX_WAIT_MS) {
+      await sleepOrVisible(POLL_INTERVAL_MS);
+
+      let res;
+      try {
+        res = await fetch(`${BACKEND_URL}/api/job/${encodeURIComponent(jobId)}`, {
+          cache: 'no-store'
+        });
+      } catch (err) {
+        // Offline, or the tab was suspended mid-request. Keep waiting.
+        if (++consecutiveFailures > MAX_CONSECUTIVE_NETWORK_FAILURES) {
+          throw new Error('La connexion a été interrompue pendant le traitement. Vérifie ta connexion Internet puis réessaie.');
+        }
+        continue;
+      }
+
+      if (res.status === 404) {
+        throw new Error('Cette opération a expiré. Relance le traitement.');
+      }
+      if (!res.ok) {
+        if (++consecutiveFailures > MAX_CONSECUTIVE_NETWORK_FAILURES) {
+          throw new Error('Une erreur du serveur est survenue pendant le traitement. Réessaie.');
+        }
+        continue;
+      }
+
+      consecutiveFailures = 0;
+
+      let body;
+      try {
+        body = await res.json();
+      } catch (err) {
+        continue; // truncated response — just poll again
+      }
+
+      if (body.status === 'processing') continue;
+      if (body.status === 'error') throw new Error(body.error || 'Le traitement a échoué.');
+      if (body.status === 'done') return body;
+    }
+
+    throw new Error('Le traitement prend plus de temps que prévu. Réessaie dans quelques instants.');
+  }
+
+  // ========================
+  // PROGRESS SIMULATION
+  // Scales with file size so it doesn't freeze
+  // ========================
+  let processingInterval = null;
+
+  // The screen wake lock is released by the browser whenever the page is hidden,
+  // so re-acquire it when the user returns while a job is still running.
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && processingInterval) {
+      requestWakeLock().catch(() => { });
+    }
+  });
+
+  function startProcessingSimulation(totalSizeMB) {
+    let current = 50;
+
+    // Estimate processing time: ~1 min per 50MB (rough)
+    // We animate from 50% to 93% over estimated time
+    const estimatedMs = Math.max(30000, (totalSizeMB / 50) * 60000);
+    const targetPct = 93;
+    const range = targetPct - 50; // 43%
+    const intervalMs = 200;
+    const steps = estimatedMs / intervalMs;
+    const stepSize = range / steps;
+
+    console.log(`Processing simulation: ${estimatedMs / 1000}s estimated for ${totalSizeMB.toFixed(0)}MB`);
+
+    processingInterval = setInterval(() => {
+      current += stepSize;
+
+      if (current >= targetPct) {
+        current = targetPct;
+        clearInterval(processingInterval);
+      }
+
+      updateProgressBar(current);
+
+      // Update step indicators based on progress
+      if (current < 60) {
+        setStep(2);
+        setStatus('', 'Optimisation…');
+      } else if (current < 75) {
+        setStep(3);
+        setStatus('', 'Découpage et optimisation…');
+      } else if (current < 93) {
+        setStep(4);
+        setStatus('', 'Finalisation…');
+      }
+    }, intervalMs);
+  }
+
+  function stopProcessingSimulation() {
+    if (processingInterval) {
+      clearInterval(processingInterval);
+      processingInterval = null;
+    }
+  }
+
+  // ========================
+  // UI HELPERS
+  // ========================
+  function updateProgressBar(pct) {
+    const fill = document.getElementById('mainProgressFill');
+    const pctEl = document.getElementById('progressPct');
+    if (fill) fill.style.width = Math.min(100, pct) + '%';
+    if (pctEl) pctEl.textContent = Math.round(Math.min(100, pct)) + '%';
+  }
+
+  function setStatus(icon, text) {
+    document.getElementById('statusIcon').textContent = icon;
+    document.getElementById('statusText').textContent = text;
+  }
+
+  function setStep(stepNum) {
+    for (let i = 1; i <= 5; i++) {
+      const el = document.getElementById(`step${i}Indicator`);
+      if (!el) continue;
+      el.classList.remove('active', 'done');
+      if (i < stepNum) el.classList.add('done');
+      if (i === stepNum) el.classList.add('active');
+    }
+  }
+
+  function showCurrentFile(name) {
+    const box = document.getElementById('currentFileBox');
+    const nameEl = document.getElementById('currentFileName');
+    if (box) box.style.display = 'block';
+    if (nameEl) nameEl.textContent = name;
+  }
+
+  function completeProgress() {
+    stopProcessingSimulation();
+    updateProgressBar(100);
+    setStatus('\u{2705}', 'Vos vidéos sont prêtes.');
+    setStep(5);
+    const fill = document.getElementById('mainProgressFill');
+    if (fill) fill.style.boxShadow = '0 0 20px rgba(253,79,47,0.5)';
+  }
+
+  // ========================
+  // COUNTDOWN TIMER
+  // ========================
+  let countdownInterval;
+  let deliveryPollTimer = null;
+  let deliveryPollStartedAt = 0;
+
+  function stopDeliveryPolling() {
+    if (deliveryPollTimer) {
+      clearTimeout(deliveryPollTimer);
+      deliveryPollTimer = null;
+    }
+  }
+
+  function startDeliveryPolling() {
+    stopDeliveryPolling();
+    if (!activationCode) return;
+
+    const code = activationCode;
+    deliveryPollStartedAt = Date.now();
+    let reloadStarted = false;
+
+    const reloadAfterDelivery = () => {
+      if (reloadStarted) return;
+      reloadStarted = true;
+
+      stopDeliveryPolling();
+      if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+      }
+
+      // Give the browser a tiny moment to paint the confirmation, then reload.
+      // The authentication/session cookie is preserved.
+      const successHeading = document.getElementById('successHeading');
+      const successSubtitle = document.querySelector('#successSection .success-subtitle');
+      if (successHeading) successHeading.textContent = 'Vidéo envoyée ✓';
+      if (successSubtitle) {
+        successSubtitle.textContent = 'La vidéo a bien été envoyée sur ton WhatsApp.';
+      }
+      showSuccess();
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    };
+
+    const checkDelivery = async () => {
+      if (reloadStarted || activationCode !== code) return;
+
+      try {
+        const response = await fetch(
+          `${BACKEND_URL}/api/delivery-status/${encodeURIComponent(code)}`,
+          {
+            cache: 'no-store',
+            credentials: 'include',
+            headers: { 'Cache-Control': 'no-cache' }
+          }
+        );
+
+        // Never stop polling on a temporary 404. This also makes the frontend
+        // compatible with a backend that cleans the main session before the
+        // delivery-status cache becomes visible.
+        if (response.status === 404) {
+          if (Date.now() - deliveryPollStartedAt < 10 * 60 * 1000) {
+            deliveryPollTimer = setTimeout(checkDelivery, 1500);
+          } else {
+            stopDeliveryPolling();
+          }
+          return;
+        }
+
+        const data = await response.json().catch(() => ({}));
+
+        if (data.status === 'sent') {
+          reloadAfterDelivery();
+          return;
+        }
+
+        if (Date.now() - deliveryPollStartedAt < 10 * 60 * 1000) {
+          deliveryPollTimer = setTimeout(checkDelivery, 1500);
+        } else {
+          stopDeliveryPolling();
+        }
+      } catch (_) {
+        if (Date.now() - deliveryPollStartedAt < 10 * 60 * 1000) {
+          deliveryPollTimer = setTimeout(checkDelivery, 2000);
+        } else {
+          stopDeliveryPolling();
+        }
+      }
+    };
+
+    // If WhatsApp opened another tab and the browser throttles background
+    // timers, immediately re-check when the MIABE page becomes visible/focused.
+    const resumeDeliveryCheck = () => {
+      if (!reloadStarted && activationCode === code) {
+        if (deliveryPollTimer) {
+          clearTimeout(deliveryPollTimer);
+          deliveryPollTimer = null;
+        }
+        checkDelivery();
+      }
+    };
+
+    window.addEventListener('focus', resumeDeliveryCheck);
+    window.addEventListener('pageshow', resumeDeliveryCheck);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resumeDeliveryCheck();
+    });
+
+    checkDelivery();
+  }
+
+  function showActivation() {
+    document.getElementById('activationCode').textContent = activationCode;
+
+    if (fileCount > files.length) {
+      document.getElementById('clipCount').textContent = fileCount;
+      document.getElementById('fileCountInfo').style.display = 'block';
+    }
+
+    document.getElementById('activationSection').classList.add('visible');
+
+    setTimeout(() => {
+      document.getElementById('activationSection').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+
+    startCountdown(5 * 60);
+    startDeliveryPolling();
+  }
+
+  function startCountdown(seconds) {
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerBox = document.getElementById('timerBox');
+    const expiredBox = document.getElementById('expiredBox');
+    const waButton = document.getElementById('waButton');
+    const urgencyWarning = document.getElementById('urgencyWarning');
+
+    if (countdownInterval) {
+      clearInterval(countdownInterval);
+      countdownInterval = null;
+    }
+
+    // Use an absolute deadline instead of decrementing a counter. This keeps the
+    // 5-minute timer accurate even when the browser throttles background timers.
+    const deadline = Date.now() + (Number(seconds) * 1000);
+
+    const fmt = (totalSeconds) => {
+      const safe = Math.max(0, Math.ceil(totalSeconds));
+      const m = Math.floor(safe / 60);
+      const sec = safe % 60;
+      return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    };
+
+    const tick = () => {
+      const remainingMs = deadline - Date.now();
+      const remaining = Math.max(0, Math.ceil(remainingMs / 1000));
+
+      if (timerDisplay) {
+        timerDisplay.textContent = fmt(remaining);
+        timerDisplay.style.color = remaining <= 60 ? '#D93025' : remaining <= 120 ? '#B26A00' : '#FD4F2F';
+      }
+
+      if (urgencyWarning) {
+        if (remaining <= 0) {
+          urgencyWarning.style.display = 'none';
+        } else if (remaining <= 60) {
+          urgencyWarning.style.display = 'flex';
+          urgencyWarning.style.borderColor = '#D93025';
+          urgencyWarning.style.background = '#FDECEA';
+          urgencyWarning.style.color = '#D93025';
+        } else {
+          urgencyWarning.style.display = 'flex';
+          urgencyWarning.style.borderColor = '#7A5A00';
+          urgencyWarning.style.background = '#FFF7DB';
+          urgencyWarning.style.color = '#B26A00';
+        }
+      }
+
+      if (remaining <= 0) {
+        if (countdownInterval) {
+          clearInterval(countdownInterval);
+          countdownInterval = null;
+        }
+        if (timerBox) timerBox.style.display = 'none';
+        if (expiredBox) expiredBox.style.display = 'block';
+        if (waButton) {
+          waButton.disabled = true;
+          waButton.style.opacity = '0.4';
+          waButton.style.cursor = 'not-allowed';
+        }
+        return;
+      }
+    };
+
+    if (timerDisplay) timerDisplay.textContent = fmt(seconds);
+    if (timerBox) timerBox.style.display = 'block';
+    if (expiredBox) expiredBox.style.display = 'none';
+    if (waButton) {
+      waButton.disabled = false;
+      waButton.style.opacity = '';
+      waButton.style.cursor = '';
+    }
+    if (urgencyWarning) {
+      urgencyWarning.style.display = 'flex';
+      urgencyWarning.style.borderColor = '#7A5A00';
+      urgencyWarning.style.background = '#FFF7DB';
+      urgencyWarning.style.color = '#B26A00';
+    }
+
+    tick();
+    countdownInterval = setInterval(tick, 250);
+  }
+
+  // ========================
+  // ACTIONS
+  // ========================
+  function openWhatsApp() {
+    window.open(waLink, '_blank');
+    // Do NOT assume that opening WhatsApp means the video was delivered.
+    // Start watching the backend and reset only when it reports `sent`.
+    startDeliveryPolling();
+  }
+
+  // Keep copyCode helper from previous implementation
+  function copyCode() {
+    navigator.clipboard.writeText(activationCode);
+    const btn = document.querySelector('.code-copy');
+    btn.textContent = 'Copié';
+    setTimeout(() => { btn.textContent = 'Copier le code'; }, 2000);
+  }
+
+  function showSuccess() {
+    const clipCountEl = document.getElementById('successClipCount');
+    const clipLabelEl = document.getElementById('successClipLabel');
+
+    if (clipCountEl) clipCountEl.textContent = fileCount || 1;
+    if (clipLabelEl) {
+      clipLabelEl.textContent = (!fileCount || fileCount <= 1) 
+        ? 'Vidéo envoyée' 
+        : 'Clips envoyés';
+    }
+
+    document.getElementById('successSection').classList.add('visible');
+    setTimeout(() => {
+      document.getElementById('successSection').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+  }
+
+  function resetApp() {
+    stopDeliveryPolling();
+    files = [];
+    waLink = '';
+    activationCode = '';
+    fileCount = 0;
+    if (captionInput) { captionInput.value = ''; if (captionCounter) captionCounter.textContent = '0 / 1000'; }
+
+    if (countdownInterval) clearInterval(countdownInterval);
+    stopProcessingSimulation();
+
+    document.getElementById('timerDisplay').textContent = '05:00';
+    document.getElementById('timerDisplay').style.color = '#FD4F2F';
+    document.getElementById('timerBox').style.display = 'block';
+    document.getElementById('expiredBox').style.display = 'none';
+
+    const waBtn = document.getElementById('waButton');
+    waBtn.disabled = false;
+    waBtn.style.opacity = '1';
+    waBtn.style.cursor = 'pointer';
+
+    const urgency = document.getElementById('urgencyWarning');
+    urgency.style.display = 'flex';
+    urgency.style.borderColor = '#7A5A00';
+    urgency.style.background = '#FFF7DB';
+    urgency.style.color = '#B26A00';
+
+    renderFiles();
+
+    document.getElementById('progressCard').style.display = 'none';
+    document.getElementById('fileCountInfo').style.display = 'none';
+    document.getElementById('activationSection').classList.remove('visible');
+    document.getElementById('successSection').classList.remove('visible');
+    const successHeading = document.getElementById('successHeading');
+    const successSubtitle = document.querySelector('#successSection .success-subtitle');
+    if (successHeading) successHeading.textContent = 'Vidéo prête';
+    if (successSubtitle) successSubtitle.textContent = 'Enregistre la vidéo reçue sur ton téléphone, puis envoie cette nouvelle copie dans un chat avant de la transférer vers ton Statut pour limiter la recompression de WhatsApp.';
+    updateProgressBar(0);
+    setStep(1);
+    setStatus('', 'Préparation…');
+    document.getElementById('currentFileBox').style.display = 'none';
+
+    const fill = document.getElementById('mainProgressFill');
+    if (fill) fill.style.boxShadow = '';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function shareApp() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'MIABE STATUS HD',
+        text: 'Prépare tes vidéos et photos en haute qualité pour WhatsApp Status avec MIABE STATUS HD.',
+        url: window.location.href
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Lien copié.');
+    }
+  }
+
+
+  // ========================
+  // LOCAL AUTH + 7-DAY TRIAL
+  // ========================
+  let pbtAuthState = null;
+
+  function authToken() {
+    return localStorage.getItem('pbt_auth_token') || '';
+  }
+
+  function hasCompletedFirstUse() {
+    return localStorage.getItem('pbt_first_use_done') === '1';
+  }
+
+  function openAuth() {
+    const modal = document.getElementById('authModal');
+    if (!modal) return;
+    modal.classList.add('visible');
+    modal.setAttribute('aria-hidden', 'false');
+    setAuthMessage('');
+  }
+
+  function closeAuth() {
+    const modal = document.getElementById('authModal');
+    if (!modal) return;
+    modal.classList.remove('visible');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  function setAuthMessage(text, isError = false) {
+    const el = document.getElementById('authMessage');
+    if (!el) return;
+    el.textContent = text || '';
+    el.style.color = isError ? 'var(--danger)' : 'var(--muted)';
+  }
+
+  let pbtAuthPollTimer = null;
+
+  async function requestWhatsAppAuth() {
+    const btn = document.getElementById('requestAuthCodeButton');
+    if (btn) btn.disabled = true;
+    setAuthMessage('Préparation de votre authentification…');
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/auth/prepare`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'},
+        body: '{}'
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Impossible de préparer l’authentification.');
+
+      setAuthMessage('WhatsApp va s’ouvrir. Envoie le message exactement comme il apparaît, puis reviens ici.');
+
+      // Keep the MIABE STATUS HD page open. WhatsApp opens in a separate tab/window
+      // so the authentication polling can continue here automatically.
+      const waWindow = window.open(data.waLink, '_blank', 'noopener,noreferrer');
+      if (!waWindow) {
+        setAuthMessage('Le navigateur bloque l’ouverture de WhatsApp. Autorise les fenêtres contextuelles puis clique à nouveau.', true);
+        return;
+      }
+
+      pollWhatsAppAuth(data.challengeId, data.pollToken);
+    } catch (error) {
+      setAuthMessage(error.message, true);
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  function stopWhatsAppAuthPolling() {
+    if (pbtAuthPollTimer) {
+      clearTimeout(pbtAuthPollTimer);
+      pbtAuthPollTimer = null;
+    }
+  }
+
+  async function pollWhatsAppAuth(challengeId, pollToken) {
+    stopWhatsAppAuthPolling();
+    const startedAt = Date.now();
+
+    const check = async () => {
+      try {
+        const response = await fetch(
+          `${BACKEND_URL}/api/auth/challenge-status?challenge=${encodeURIComponent(challengeId)}&pollToken=${encodeURIComponent(pollToken)}`,
+          { credentials: 'include', cache: 'no-store' }
+        );
+        const data = await response.json().catch(() => ({}));
+
+        if (data.status === 'verified' && data.token) {
+          localStorage.setItem('pbt_auth_token', data.token);
+          localStorage.setItem('pbt_first_use_done', '1');
+          sessionStorage.setItem('pbt_open_account_after_auth', '1');
+          stopWhatsAppAuthPolling();
+          setAuthMessage('✓ Authentification réussie. Actualisation de votre espace…');
+          setTimeout(() => window.location.reload(), 500);
+          return;
+        }
+
+        if (response.status === 404 || data.status === 'expired') {
+          setAuthMessage('Le délai est dépassé. Clique à nouveau sur le bouton pour recommencer.', true);
+          stopWhatsAppAuthPolling();
+          return;
+        }
+
+        if (Date.now() - startedAt >= 10 * 60 * 1000) {
+          setAuthMessage('Le délai est dépassé. Clique à nouveau sur le bouton pour recommencer.', true);
+          stopWhatsAppAuthPolling();
+          return;
+        }
+
+        pbtAuthPollTimer = setTimeout(check, 2000);
+      } catch (error) {
+        if (Date.now() - startedAt < 10 * 60 * 1000) {
+          pbtAuthPollTimer = setTimeout(check, 2500);
+        } else {
+          setAuthMessage('Impossible de vérifier l’authentification. Réessaie.', true);
+          stopWhatsAppAuthPolling();
+        }
+      }
+    };
+
+    check();
+  }
+
+  function openAccount() {
+    if (!pbtAuthState?.authenticated) {
+      openAuth();
+      return;
+    }
+
+    updateAccountUI(pbtAuthState);
+
+    const modal = document.getElementById('accountModal');
+    if (!modal) return;
+    modal.classList.add('visible');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeAccount() {
+    const modal = document.getElementById('accountModal');
+    if (!modal) return;
+    modal.classList.remove('visible');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  function normalizeFrontendPhone(value) {
+    let phone = String(value || '').trim().replace(/[^\d+]/g, '');
+    if (phone.startsWith('00')) phone = '+' + phone.slice(2);
+    return phone;
+  }
+
+  function setAuthMessage(text, isError = false) {
+    const el = document.getElementById('authMessage');
+    if (!el) return;
+    el.textContent = text || '';
+    el.style.color = isError ? 'var(--danger)' : 'var(--muted)';
+  }
+
+  async function exchangePersonalAccountLink() {
+    // /a/<slug> is exchanged directly for a normal authenticated HttpOnly session.
+    // The slug never becomes the session token and is removed from the address bar.
+    const path = window.location.pathname || '/';
+    const slugMatch = path.match(/^\/a\/([A-Za-z0-9_-]{6,20})$/);
+    if (slugMatch) {
+      try {
+        const response = await fetch(`${BACKEND_URL}${path}`, {
+          credentials: 'include',
+          cache: 'no-store',
+          redirect: 'follow'
+        });
+        if (!response.ok) {
+          const msg = await response.text().catch(() => '');
+          console.warn('Personal /a/ link rejected:', msg || response.status);
+          alert(msg || 'Ce lien personnel est invalide.');
+          return false;
+        }
+        history.replaceState(null, document.title, '/');
+        sessionStorage.setItem('pbt_open_account_after_auth', '1');
+        return true;
+      } catch (error) {
+        console.warn('Personal /a/ link exchange failed:', error);
+        alert('Impossible de contacter le serveur pour ouvrir ton espace compte.');
+        return false;
+      }
+    }
+
+    // Legacy link compatibility: #account=<old-token>. The fragment is never
+    // sent to Express, so the browser must exchange it through this API.
+    const hash = window.location.hash || '';
+    if (!hash.startsWith('#account=')) return false;
+
+    let token = hash.slice('#account='.length).trim();
+    try { token = decodeURIComponent(token); } catch (_) {}
+    token = token.trim();
+    if (!token) return false;
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/account-link/exchange?token=${encodeURIComponent(token)}`, {
+        credentials: 'include',
+        cache: 'no-store'
+      });
+      const data = await response.json().catch(() => ({}));
+
+      // V8 no longer authenticates directly from a personal link. A successful
+      // legacy exchange only starts the WhatsApp verification attempt.
+      if (!response.ok || data.ok !== true) {
+        console.warn('Legacy personal account link rejected:', data.error || response.status);
+        if (response.status === 401) alert(data.error || 'Ce lien personnel est invalide ou expiré.');
+        return false;
+      }
+
+      history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      sessionStorage.setItem('pbt_open_account_after_auth', '1');
+      return false;
+    } catch (error) {
+      console.warn('Legacy personal account link exchange failed:', error);
+      alert('Impossible de contacter le serveur pour ouvrir ton espace compte.');
+      return false;
+    }
+  }
+
+  async function getAccountAccess() {
+    const token = authToken();
+
+    try {
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+      const response = await fetch(`${BACKEND_URL}/api/auth/me`, {
+        headers,
+        credentials: 'include',
+        cache: 'no-store'
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      // FIRST_USE is a valid state: the visitor is allowed to process
+      // the first video without authentication.
+      if (data.status === 'FIRST_USE') {
+        pbtAuthState = data;
+        return data;
+      }
+
+      if (!response.ok || !data.authenticated) {
+        localStorage.removeItem('pbt_auth_token');
+        pbtAuthState = null;
+        return {
+          authenticated: false,
+          access: false,
+          status: data.authenticationRequired ? 'AUTH_REQUIRED' : 'SIGNED_OUT',
+          authenticationRequired: !!data.authenticationRequired
+        };
+      }
+
+      pbtAuthState = data;
+      updateAccountUI(data);
+      return data;
+    } catch (_) {
+      // Keep the first-use experience available if the account endpoint
+      // is temporarily unreachable.
+      return pbtAuthState || {
+        authenticated: false,
+        access: false,
+        status: 'SIGNED_OUT'
+      };
+    }
+  }
+
+  function canProcessNow(access) {
+    if (!hasCompletedFirstUse()) return true;
+    return !!(access && access.authenticated && access.access);
+  }
+
+  function formatRemaining(until) {
+    const end = Number(until || 0);
+    if (!end) return '—';
+
+    const remainingMs = Math.max(0, end - Date.now());
+    if (remainingMs <= 0) return 'Expiré';
+
+    const totalHours = Math.floor(remainingMs / 3600000);
+    const days = Math.floor(totalHours / 24);
+    const hours = totalHours % 24;
+
+    if (days > 0) return `${days}J ${hours}h restantes`;
+    if (hours > 0) return `0J ${hours}h restantes`;
+
+    const minutes = Math.max(1, Math.floor(remainingMs / 60000));
+    return `${minutes} min restantes`;
+  }
+
+  function formatDisplayPhone(value) {
+    let phone = String(value || '').trim().replace(/[^\d+]/g, '');
+    if (!phone || phone === '—') return '—';
+    if (phone.startsWith('00')) phone = '+' + phone.slice(2);
+    if (!phone.startsWith('+')) phone = '+' + phone;
+
+    const digits = phone.slice(1).replace(/\D/g, '');
+    if (!digits) return '—';
+
+    // Common country-specific layouts first. Togo: +228 91 59 78 56.
+    const known = [
+      ['1', 3, 3, 4],
+      ['33', 1, 2, 2, 2, 2, 2],
+      ['32', 3, 2, 2, 2],
+      ['34', 3, 2, 2, 2],
+      ['39', 3, 3, 2, 2],
+      ['44', 4, 3, 3],
+      ['49', 3, 3, 2, 2],
+      ['91', 5, 5],
+      ['225', 2, 2, 2, 2],
+      ['226', 2, 2, 2, 2],
+      ['227', 2, 2, 2, 2],
+      ['228', 2, 2, 2, 2],
+      ['229', 2, 2, 2, 2],
+      ['230', 2, 2, 2, 2],
+      ['231', 2, 2, 2, 2],
+      ['232', 2, 2, 2, 2],
+      ['233', 2, 2, 2, 2],
+      ['234', 3, 3, 4],
+      ['235', 2, 2, 2, 2],
+      ['236', 2, 2, 2, 2],
+      ['237', 3, 2, 2, 2],
+      ['238', 2, 2, 2, 2],
+      ['239', 2, 2, 2, 2],
+      ['240', 2, 2, 2, 2],
+      ['241', 2, 2, 2, 2],
+      ['242', 2, 2, 2, 2],
+      ['243', 2, 2, 2, 2],
+      ['244', 2, 2, 2, 2],
+      ['245', 2, 2, 2, 2],
+      ['248', 2, 2, 2, 2],
+      ['249', 2, 2, 2, 2],
+      ['250', 2, 2, 2, 2],
+      ['251', 2, 2, 2, 2],
+      ['252', 2, 2, 2, 2],
+      ['253', 2, 2, 2, 2],
+      ['254', 2, 2, 2, 2],
+      ['255', 2, 2, 2, 2],
+      ['256', 2, 2, 2, 2],
+      ['257', 2, 2, 2, 2],
+      ['258', 2, 2, 2, 2],
+      ['260', 2, 2, 2, 2],
+      ['261', 2, 2, 2, 2],
+      ['262', 3, 2, 2, 2],
+      ['263', 2, 2, 2, 2],
+      ['264', 2, 2, 2, 2],
+      ['265', 2, 2, 2, 2],
+      ['266', 2, 2, 2, 2],
+      ['267', 2, 2, 2, 2],
+      ['268', 2, 2, 2, 2],
+      ['269', 2, 2, 2, 2],
+      ['27', 2, 2, 2, 2],
+      ['7', 3, 3, 2, 2],
+      ['81', 2, 4, 4],
+      ['82', 2, 4, 4],
+      ['84', 3, 3, 2],
+      ['86', 3, 3, 2],
+      ['90', 3, 3, 2],
+      ['92', 2, 4, 4],
+      ['93', 3, 3, 2],
+      ['94', 2, 3, 3, 2],
+      ['95', 2, 3, 3, 2],
+      ['98', 3, 3, 2],
+    ];
+
+    for (const [code, ...groups] of known) {
+      if (!digits.startsWith(code)) continue;
+      const rest = digits.slice(code.length);
+      let pos = 0;
+      const parts = [];
+      for (const size of groups) {
+        if (pos >= rest.length) break;
+        parts.push(rest.slice(pos, pos + size));
+        pos += size;
+      }
+      if (pos < rest.length) parts.push(rest.slice(pos));
+      return '+' + code + (parts.length ? ' ' + parts.join(' ') : '');
+    }
+
+    // Safe fallback for countries not listed above: group remaining digits by 2.
+    const parts = digits.match(/\d{1,2}/g) || [];
+    return '+' + parts.shift() + ' ' + parts.join(' ');
+  }
+
+  function initScrollAnimations() {
+    const header = document.querySelector('.topbar');
+    const revealTargets = document.querySelectorAll('main > .hero, main > .card, main > .pbt-plan, footer');
+    revealTargets.forEach((el, index) => {
+      el.classList.add('scroll-reveal');
+      if (index > 0) el.style.transitionDelay = Math.min(index * 60, 240) + 'ms';
+    });
+
+    const updateHeader = () => {
+      if (header) header.classList.toggle('scrolled', window.scrollY > 12);
+    };
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    if (!('IntersectionObserver' in window)) {
+      revealTargets.forEach(el => el.classList.add('revealed'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach(el => observer.observe(el));
+  }
+
+  function formatExpiryDate(until) {
+    const end = Number(until || 0);
+    if (!end) return '—';
+    const date = new Date(end);
+    if (Number.isNaN(date.getTime())) return '—';
+    return `Expire le ${date.toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' })}`;
+  }
+
+  function updateAccountUI(data) {
+    const planBar = document.getElementById('planBar');
+    const planTitle = document.getElementById('planTitle');
+    const planDetail = document.getElementById('planDetail');
+
+    const accountPhone = document.getElementById('accountPhone');
+    const accountUserId = document.getElementById('accountUserId');
+    const accountPlan = document.getElementById('accountPlan');
+    const accountRemaining = document.getElementById('accountRemaining');
+    const accountSubscribeButton = document.getElementById('accountSubscribeButton');
+    const accountPlanBox = document.getElementById('accountPlanBox');
+
+    renderTopSubscriptionButton(data);
+
+    if (!data || !data.authenticated) {
+      if (planBar) planBar.classList.remove('visible');
+      return;
+    }
+
+
+    const phone = formatDisplayPhone(data.phoneDisplay || data.phone || data.user?.phoneDisplay || data.user?.phone || '—');
+    const userId = data.userId || data.user?.userId || '—';
+    const expiry = formatExpiryDate(data.until);
+
+    if (accountPhone) accountPhone.textContent = phone;
+    if (accountUserId) accountUserId.textContent = userId;
+    if (accountPlanBox) accountPlanBox.className = 'account-plan-box';
+
+    if (data.status === 'TRIAL') {
+      if (accountPlanBox) accountPlanBox.classList.add('trial');
+      if (planTitle) planTitle.textContent = 'ESSAI GRATUIT';
+      if (planDetail) planDetail.textContent = expiry;
+      if (planBar) planBar.classList.add('visible');
+
+      if (accountPlan) accountPlan.textContent = 'ESSAI GRATUIT';
+      if (accountRemaining) accountRemaining.textContent = expiry;
+      // The free trial is active, but the user may subscribe in advance.
+      if (accountSubscribeButton) {
+        accountSubscribeButton.style.display = 'block';
+        accountSubscribeButton.textContent = 'S’abonner';
+      }
+      return;
+    }
+
+    if (data.status === 'SUBSCRIBED') {
+      if (accountPlanBox) accountPlanBox.classList.add('premium');
+      if (planTitle) planTitle.textContent = 'PREMIUM';
+      if (planDetail) planDetail.textContent = expiry;
+      if (planBar) planBar.classList.add('visible');
+
+      if (accountPlan) accountPlan.textContent = 'PREMIUM';
+      if (accountRemaining) accountRemaining.textContent = expiry;
+      if (accountSubscribeButton) {
+        accountSubscribeButton.style.display = 'block';
+        accountSubscribeButton.textContent = 'S’abonner';
+      }
+      return;
+    }
+
+    if (data.status === 'EXPIRED') {
+      if (planTitle) planTitle.textContent = 'ESSAI GRATUIT expiré';
+      if (planDetail) planDetail.textContent = 'Abonnement requis';
+      if (planBar) planBar.classList.add('visible');
+
+      if (accountPlan) accountPlan.textContent = 'ESSAI EXPIRÉ';
+      if (accountRemaining) accountRemaining.textContent = 'Un abonnement est nécessaire pour continuer.';
+      if (accountSubscribeButton) accountSubscribeButton.style.display = 'block';
+    }
+  }
+
+  async function logoutAuth() {
+    // The authenticated session is also stored in an HttpOnly cookie.
+    // Removing localStorage alone is not enough: after a refresh, the server
+    // would recreate the account state from that cookie. Revoke the server
+    // session first, then clear the browser-side state.
+    try {
+      await fetch(`${BACKEND_URL}/api/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+        cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}'
+      });
+    } catch (error) {
+      console.warn('Logout request failed:', error);
+    }
+
+    localStorage.removeItem('pbt_auth_token');
+    localStorage.removeItem('pbt_first_use_done');
+    sessionStorage.removeItem('pbt_open_account_after_auth');
+    pbtAuthState = null;
+    closeAccount();
+    updateAccountUI(null);
+    renderTopSubscriptionButton({ authenticated:false, hasPaidSubscription:false });
+
+    // Refresh so /api/auth/me is evaluated with the revoked server session.
+    window.location.reload();
+  }
+
+  const SUBSCRIPTION_PLANS = {
+    '1m': { amount: 2000, days: 30, label: '1 mois' },
+    '6m': { amount: 10000, days: 180, label: '6 mois' },
+    '12m': { amount: 18000, days: 365, label: '12 mois' }
+  };
+
+  let selectedSubscriptionPlan = '';
+
+  function renderTopSubscriptionButton(data) {
+    const button = document.getElementById('topSubscribeButton');
+    if (!button) return;
+
+    // Once a paid subscription has been purchased, including one queued after
+    // the current trial/subscription, replace "S’abonner" with "Compte Premium".
+    const premium = Boolean(data?.hasPaidSubscription || data?.status === 'SUBSCRIBED');
+    button.textContent = premium ? 'Compte Premium' : 'S’abonner';
+    button.classList.toggle('premium', premium);
+  }
+
+  async function configureSubscriptionModalForCurrentSession() {
+    const step = document.getElementById('subscriptionWhatsappStep');
+    const note = document.getElementById('subscriptionNote');
+    const intro = document.getElementById('subscriptionIntro');
+    const buttons = document.querySelectorAll('#subscriptionModal .subscription-choose');
+
+    // Ask the server for the real session state. This is important because the
+    // authenticated session is normally stored in an HttpOnly cookie.
+    const access = await getAccountAccess();
+    const authenticated = Boolean(access?.authenticated);
+
+    buttons.forEach((button) => {
+      button.textContent = authenticated ? 'Payer maintenant' : 'Continuer avec WhatsApp';
+    });
+
+    if (authenticated) {
+      if (step) step.classList.remove('visible');
+      if (note) note.textContent = 'Choisis une offre pour continuer directement vers le paiement.';
+      if (intro) intro.textContent = 'Vous êtes sur le point de vous abonner. Choisisez un abonnement et votre moyen de paiement';
+    } else {
+      if (step) step.classList.remove('visible');
+      if (note) note.textContent = 'La connexion WhatsApp est nécessaire uniquement pour un compte qui n’est pas encore connecté.';
+      if (intro) intro.textContent = 'Si tu n’es pas connecté, WhatsApp sera utilisé pour retrouver ou créer ton compte avant le paiement.';
+    }
+
+    return access;
+  }
+
+  async function openSubscription() {
+    const modal = document.getElementById('subscriptionModal');
+    const step = document.getElementById('subscriptionWhatsappStep');
+    if (!modal) return;
+    selectedSubscriptionPlan = '';
+    resetSubscriptionPaymentView();
+    if (step) step.classList.remove('visible');
+    modal.classList.add('visible');
+    modal.setAttribute('aria-hidden', 'false');
+    await configureSubscriptionModalForCurrentSession();
+  }
+
+  function closeSubscription() {
+    const modal = document.getElementById('subscriptionModal');
+    if (!modal) return;
+    modal.classList.remove('visible');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  async function chooseSubscriptionPlan(plan) {
+    if (!SUBSCRIPTION_PLANS[plan]) return;
+    selectedSubscriptionPlan = plan;
+
+    // An already authenticated account never needs to go through WhatsApp
+    // again. Check the server session too, because it may be stored in the
+    // HttpOnly cookie even when localStorage has no auth token.
+    const access = await getAccountAccess();
+    if (access?.authenticated) {
+      const step = document.getElementById('subscriptionWhatsappStep');
+      if (step) step.classList.remove('visible');
+      // Keep the subscription modal OPEN: the SoftPay form is rendered
+      // inside this modal. Closing it here makes the payment page invisible.
+      await startSubscriptionPayment(plan);
+      return;
+    }
+
+    // Only a visitor without an authenticated account sees the WhatsApp step.
+    const step = document.getElementById('subscriptionWhatsappStep');
+    if (step) {
+      step.classList.add('visible');
+      step.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  async function continueSubscriptionWithWhatsApp() {
+    if (!selectedSubscriptionPlan) return;
+
+    // This button exists only for a visitor who is not connected yet.
+    sessionStorage.setItem('pbt_pending_subscription_plan', selectedSubscriptionPlan);
+    closeSubscription();
+    openAuth();
+  }
+
+  function resetSubscriptionPaymentView() {
+    const plans = document.querySelector('.subscription-plans');
+    const step = document.getElementById('subscriptionWhatsappStep');
+    const payment = document.getElementById('subscriptionPayment');
+    const note = document.getElementById('subscriptionNote');
+    if (plans) plans.style.display = '';
+    if (step) step.style.display = '';
+    if (payment) payment.classList.remove('visible');
+    if (note) note.style.display = '';
+  }
+
+  function backToSubscriptionPlans() {
+    const payment = document.getElementById('subscriptionPayment');
+    const plans = document.querySelector('.subscription-plans');
+    const step = document.getElementById('subscriptionWhatsappStep');
+    const note = document.getElementById('subscriptionNote');
+    if (payment) payment.classList.remove('visible');
+    if (plans) plans.style.display = '';
+    if (step) step.style.display = '';
+    if (note) note.style.display = '';
+    const container = document.getElementById('cartfloxSoftpay');
+    if (container) container.innerHTML = '';
+  }
+
+  async function startSubscriptionPayment(plan) {
+    const selected = SUBSCRIPTION_PLANS[plan];
+    if (!selected) return;
+
+    const plans = document.querySelector('.subscription-plans');
+    const step = document.getElementById('subscriptionWhatsappStep');
+    const payment = document.getElementById('subscriptionPayment');
+    const note = document.getElementById('subscriptionNote');
+    const planText = document.getElementById('subscriptionPaymentPlan');
+    const status = document.getElementById('subscriptionPaymentStatus');
+    const container = document.getElementById('cartfloxSoftpay');
+
+    if (!payment || !container) return;
+
+    if (plans) plans.style.display = 'none';
+    if (step) step.style.display = 'none';
+    if (note) note.style.display = 'none';
+    payment.classList.add('visible');
+    if (planText) planText.textContent = `${selected.label} — ${selected.amount.toLocaleString('fr-FR')} FCFA`;
+    if (status) status.textContent = 'Préparation du paiement…';
+    container.innerHTML = '';
+
+    try {
+      const token = authToken();
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers.Authorization = `Bearer ${token}`;
+
+      const response = await fetch(`${BACKEND_URL}/api/subscription/softpay/order`, {
+        method: 'POST',
+        credentials: 'include',
+        headers,
+        body: JSON.stringify({
+          plan,
+          planId: plan,
+          planLabel: selected.label,
+          amount: selected.amount,
+          days: selected.days
+        })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.status === 401 || data.authenticationRequired) {
+        closeSubscription();
+        sessionStorage.setItem('pbt_pending_subscription_plan', plan);
+        openAuth();
+        return;
+      }
+
+      if (!response.ok || !data.orderId) {
+        throw new Error(data.error || 'Impossible de préparer le paiement.');
+      }
+
+      const publicKey = data.publicKey || CARTFLOX_PUBLIC_KEY;
+      if (!publicKey) {
+        throw new Error('Clé publique Cartflox introuvable.');
+      }
+
+      if (!window.Cartflox?.softpay) {
+        throw new Error('Le module de paiement Cartflox n’est pas disponible.');
+      }
+
+      Cartflox.softpay.configure({ publicKey });
+
+      Cartflox.softpay.mount({
+        container: '#cartfloxSoftpay',
+        amount: Number(data.amount),
+        currency: 'XOF',
+        country: 'tg',
+        description: `MIABE STATUS HD — ${data.planLabel}`,
+        metadata: {
+          order_id: data.orderId,
+          plan: plan,
+          days: selected.days
+        },
+        merchant_name: 'MIABE STATUS HD',
+        theme: {
+          accent: '#25D366',
+          'accent-text': '#071b0d',
+          radius: '20px',
+          font: 'inherit'
+        },
+        labels: {
+          payer: 'Payer',
+          telephone: 'Ton numéro Mobile Money',
+          succes: 'Paiement reçu !'
+        },
+        onStatus: function(r) {
+          if (status && r?.status) status.textContent = `Statut du paiement : ${r.status}`;
+        },
+        onSuccess: async function(r) {
+          if (status) status.textContent = 'Paiement reçu. Vérification de ton abonnement…';
+          let checks = 0;
+          const verify = async () => {
+            checks += 1;
+            const latest = await getAccountAccess();
+            renderTopSubscriptionButton(latest);
+            if (latest?.hasPaidSubscription) {
+              if (status) status.textContent = '✓ Abonnement confirmé. Ton accès Premium est activé.';
+              setTimeout(() => { closeSubscription(); window.location.reload(); }, 900);
+              return;
+            }
+            if (checks < 12) setTimeout(verify, 1200);
+            else if (status) status.textContent = 'Paiement reçu. La confirmation serveur est en cours…';
+          };
+          setTimeout(verify, 700);
+        },
+        onError: function(e) {
+          if (status) status.textContent = e?.message || 'Le paiement a échoué ou a expiré.';
+        }
+      });
+    } catch (error) {
+      if (status) status.textContent = error?.message || 'Impossible de contacter le service de paiement.';
+    }
+  }
+
+  function startSubscription(plan) {
+    if (plan && SUBSCRIPTION_PLANS[plan]) {
+      chooseSubscriptionPlan(plan);
+      return;
+    }
+    openSubscription();
+  }
+
+  function handleTopSubscribe() {
+    const button = document.getElementById('topSubscribeButton');
+    const isPremium = button?.textContent?.trim() === 'Compte Premium';
+    if (isPremium) {
+      openAccount();
+      return;
+    }
+    openSubscription();
+  }
+
+  document.addEventListener('click', (event) => {
+    const modal = document.getElementById('subscriptionModal');
+    if (modal && event.target === modal) closeSubscription();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeSubscription();
+  });
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const savedTheme = localStorage.getItem('pbt_theme');
+    setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+    // A personal WhatsApp link can restore the account without exposing the auth token in the URL.
+    const openedFromPersonalLink = await exchangePersonalAccountLink();
+
+    // Restore an existing authenticated account.
+    const access = await getAccountAccess();
+    renderTopSubscriptionButton(access);
+
+    // If the trial/account has expired, show the subscription bar.
+    if (access?.authenticated) {
+      updateAccountUI(access);
+
+      // After WhatsApp authentication, the page was deliberately refreshed.
+      // Open the account area automatically on that fresh page.
+      if (openedFromPersonalLink || sessionStorage.getItem('pbt_open_account_after_auth') === '1') {
+        sessionStorage.removeItem('pbt_open_account_after_auth');
+        setTimeout(() => openAccount(), 120);
+      }
+
+      const pendingSubscriptionPlan = sessionStorage.getItem('pbt_pending_subscription_plan');
+      if (pendingSubscriptionPlan && SUBSCRIPTION_PLANS[pendingSubscriptionPlan]) {
+        sessionStorage.removeItem('pbt_pending_subscription_plan');
+        setTimeout(() => startSubscriptionPayment(pendingSubscriptionPlan), 250);
+      }
+
+      // After Cartflox returns to success_url, the signed webhook may already
+      // have marked the order paid. Refresh a few times so the header changes to
+      // "Compte Premium" without requiring a manual reload.
+      if (new URLSearchParams(window.location.search).get('payment') === 'success') {
+        let checks = 0;
+        const pollPayment = async () => {
+          checks += 1;
+          const latest = await getAccountAccess();
+          renderTopSubscriptionButton(latest);
+          if (latest?.hasPaidSubscription || checks >= 10) {
+            const cleanUrl = window.location.pathname + window.location.hash;
+            history.replaceState(null, document.title, cleanUrl);
+            if (latest?.hasPaidSubscription) {
+              alert('✓ Abonnement confirmé. Ton accès Premium est activé.');
+            }
+            return;
+          }
+          setTimeout(pollPayment, 1500);
+        };
+        setTimeout(pollPayment, 700);
+      }
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollAnimations, { once: true });
+  } else {
+    initScrollAnimations();
+  }
+
+</script>
+</body>
+</html>

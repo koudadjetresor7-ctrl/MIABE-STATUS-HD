@@ -1,0 +1,18 @@
+﻿node_modules/
+.env
+data/
+uploads/
+temp/
+tmp/
+logs/
+*.log
+
+# Baileys / WhatsApp
+auth_info/
+auth/
+sessions/
+baileys_auth/
+creds.json
+pre-key-*.json
+session-*.json
+app-state-sync-*.json

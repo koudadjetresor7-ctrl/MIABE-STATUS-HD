@@ -1,0 +1,25 @@
+POWERD BY TRESOR V3
+
+1. Installer Node.js.
+2. Vérifier FFmpeg et FFprobe:
+   ffmpeg -version
+   ffprobe -version
+3. Dans ce dossier:
+   npm ci
+4. Autoriser les scripts nécessaires si npm le demande:
+   npm install-scripts approve @whiskeysockets/baileys ffmpeg-static protobufjs sharp
+5. Copier .env.example vers .env puis vérifier:
+   WHATSAPP_BUSINESS_NUMBER=+22872204628
+   RESET_BAILEYS=true (premier jumelage seulement)
+   AUTH_DEV_MODE=true (tests locaux)
+6. Démarrer:
+   npm start
+7. Ouvrir http://localhost:3000
+8. Créer une session avec le numéro utilisateur. En mode test local, le code à 5 caractères est affiché à l'écran.
+9. Le compte bénéficie de 7 jours d'essai.
+10. Après l'essai, l'interface demande l'abonnement mensuel MoMo.
+11. Le connecteur MoMo reste désactivé jusqu'à configuration de l'API réelle.
+12. Pour le relais WhatsApp, associer +22872204628 via le code de jumelage affiché par le serveur.
+13. Après le premier jumelage, passer RESET_BAILEYS=false.
+
+Important: ne publiez jamais .env, les clés API, ni le dossier baileys_auth.
